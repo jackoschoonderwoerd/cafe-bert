@@ -1,0 +1,36 @@
+<mat-toolbar>
+    <div class="left">
+        <mat-icon class="menu"
+            (click)="onMenu()">menu</mat-icon>
+        <mat-icon class="home"
+            routerLink="home">home</mat-icon>
+        @for(menuItem of navigationStore.userMenuItems();track $index) {
+        <button class="menu-buttons"
+            routerLinkActive="link-active"
+            [routerLink]="menuItem.link"
+            mat-button>{{appStore.activeLanguage() === 'nl' ? menuItem.nl : menuItem.en}}</button>
+        }
+    </div>
+    <div class="center">
+
+        <div class="cafe">Café</div>
+        <div class="parisius">Parisius</div>
+
+
+    </div>
+    <div class="right">
+        <app-language-selector></app-language-selector>
+        @if(!appStore.isLoggedIn()) {
+        <button mat-icon-button
+            routerLink="login">
+            <mat-icon>login</mat-icon>
+        </button>
+        }
+        @if(appStore.isLoggedIn()) {
+        <button mat-icon-button
+            (click)="appStore.logOut()">
+            <mat-icon>logout</mat-icon>
+        </button>
+        }
+    </div>
+</mat-toolbar>

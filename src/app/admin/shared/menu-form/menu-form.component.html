@@ -1,0 +1,36 @@
+<div class="title"
+    matDialogTitle>add drink</div>
+<mat-dialog-content>
+
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>name nl</mat-label>
+            <input type="text"
+                matInput
+                formControlName="nameNl">
+
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>name en</mat-label>
+            <input type="text"
+                matInput
+                formControlName="nameEn">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>price</mat-label>
+            <input type="number"
+                matInput
+                formControlName="price">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="buttons">
+        <button mat-raised-button
+            (click)="onCancel()">cancel</button>
+        <button mat-raised-button
+            [disabled]="form.invalid"
+            (click)="onSubmitForm()">{{editmode ? 'update':'add'}}</button>
+    </div>
+
+</mat-dialog-actions>

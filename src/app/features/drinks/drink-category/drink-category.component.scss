@@ -1,0 +1,45 @@
+.wrapper {
+    background-color: #6b4820;
+    // color: #e3a634;
+    padding: 1rem;
+    height: 100%;
+
+    .header {
+        // border: 2px solid white;
+        padding: 0.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .header-top-left {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                .order-of-appearance {
+                    background-color: white;
+                    padding: 0.5rem;
+                    color: black;
+                }
+            }
+            .name {
+                text-transform: uppercase;
+            }
+            .icon-buttons {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+        .description {
+            font-style: italic;
+        }
+    }
+
+    .icon-buttons {
+    }
+    .buttons {
+        margin-top: 0.5rem;
+    }
+}

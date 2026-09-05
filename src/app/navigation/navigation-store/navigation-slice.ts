@@ -1,0 +1,31 @@
+
+
+interface MenuItem {
+    nl: string;
+    en: string;
+    link: string
+}
+
+export interface NavigationSlice {
+    readonly userMenuItems: MenuItem[];
+    readonly adminMenuItems: MenuItem[];
+
+}
+
+// export type PersistedAppStoreSlice = Pick<AppStoreSlice, 'drinkCategories'>
+
+export const initialNavigationSlice: NavigationSlice = {
+    userMenuItems: [
+        {
+            nl: 'dranken',
+            en: 'drinks',
+            link: 'drinks'
+        },
+        {
+            nl: 'menu',
+            en: 'menu',
+            link: 'menu'
+        }
+    ],
+    adminMenuItems: []
+}

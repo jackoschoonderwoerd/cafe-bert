@@ -1,0 +1,101 @@
+<div class="name_price_buttons">
+    <div class="name_price">
+        <div class="left">
+            <div class="name">
+                {{appStore.activeLanguage() === 'nl'? drink()?.nameNl: drink()?.nameEn}}
+            </div>
+            <div class="description">{{appStore.activeLanguage() === 'nl'? drink()?.descriptionNl: drink()?.descriptionEn}}</div>
+
+        </div>
+        <div class="price">
+            @switch (drinkCategoriesStore.getEnDrinkCategoryNameById(categoryId())) {
+
+            @case ('white wine') {
+            <div class="wine-prices">
+                <div class="price-vessel">
+                    {{ drink()?.price | currency: 'EUR' }}
+                </div>
+                <div class="price-vessel">
+                    {{ drink()?.priceBottle | currency: 'EUR' }}
+                </div>
+            </div>
+            }
+
+            @case ('draft beers') {
+            <div class="draft-beer-prices">
+                <div class="price-draft">
+                    {{ drink()?.priceKleintje | currency:'EUR' }}
+                </div>
+                <div class="price-draft">
+                    {{ drink()?.priceFluitje | currency:'EUR' }}
+                </div>
+                <div class="price-draft">
+                    {{ drink()?.priceVaasje | currency:'EUR' }}
+                </div>
+            </div>
+            }
+
+            @case ('arend jan de wijnman') {
+            <div class="price-bottle">
+                {{ drink()?.priceBottle | currency:'EUR' }}
+            </div>
+            }
+
+            @default {
+            <div class="price-glass">
+                {{ drink()?.price | currency:'EUR' }}
+            </div>
+            }
+            }
+        </div>
+
+        <!-- <div class="price">
+            @if(categoryNameEn === 'white wine') {
+            <div class="wine-prices">
+                <div class="price-glass">{{drink()?.price|currency:"EUR"}}</div>
+                <div class="price-bottle">{{drink()?.priceBottle|currency:"EUR"}}</div>
+            </div>
+            }
+            @else if(categoryNameEn === 'draft beers'){
+            <div class="draft-beer-prices">
+                <div class="price-draft">{{drink()?.priceKleintje|currency:"EUR"}}</div>
+                <div class="price-draft">{{drink()?.priceFluitje|currency:"EUR"}}</div>
+                <div class="price-draft">{{drink()?.priceVaasje|currency:"EUR"}}</div>
+            </div>
+            }
+            @else if(categoryNameEn === 'arend jan de wijnman') {
+            <div class="price-bottle">{{drink()?.priceBottle|currency:"EUR"}}</div>
+            } @else {
+            <div class="price-glass">{{drink()?.price|currency:"EUR"}}</div>
+            }
+        </div> -->
+    </div>
+    @if(appStore.isLoggedIn()){
+    <div class="icon-buttons">
+
+
+        @if(!first()){
+
+        <button mat-icon-button
+            (click)="onMoveUp()">
+            <mat-icon>arrow_drop_up</mat-icon>
+        </button>
+        }
+        @if(!last()) {
+
+        <button mat-icon-button
+            (click)="onMoveDown()">
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        }
+        <button mat-icon-button
+            (click)="onDelete()">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button
+            (click)="onEdit()">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+    }
+</div>

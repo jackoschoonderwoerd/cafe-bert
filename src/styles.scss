@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use "./styles/variables";
+@use "./styles/mixins";
+@use "./styles/jazzfry";
+
+html,
+body {
+    height: 100%;
+    background-color: var(--p-black);
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+    // border: 1px solid red !important;
+    text-transform: uppercase !important;
+    background-color: white !important;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}

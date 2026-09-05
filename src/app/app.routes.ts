@@ -1,3 +1,32 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path: '', redirectTo: 'home', pathMatch: 'full'
+    },
+    {
+        path: 'home',
+        loadComponent: () => import('./features/home/home.component')
+            .then(c => c.HomeComponent)
+    },
+    {
+        path: 'drinks',
+        loadComponent: () => import('./features/drinks/drinks.component')
+            .then(c => c.DrinksComponent)
+    },
+    {
+        path: 'menu',
+        loadComponent: () => import('./features/menu/menu.component')
+            .then(c => c.MenuComponent)
+    },
+    {
+        path: 'login',
+        loadComponent: () => import('./auth/login/login.component')
+            .then(c => c.LoginComponent)
+    },
+    {
+        path: '**',
+        loadComponent: () => import('./features/drinks/drinks.component')
+            .then(c => c.DrinksComponent)
+    },
+];

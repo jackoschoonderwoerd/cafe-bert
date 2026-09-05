@@ -1,0 +1,13 @@
+<div class="wrapper">
+    @if(appStore.isLoggedIn()){
+    <button mat-button
+        (click)="onAddDrinkCategory()">add drink category</button>
+    }
+    <div class="drink-categories">
+        @for(category of drinkCategoryStore.drinkCategories();track $index) {
+        <app-drink-category [category]="category"></app-drink-category>
+        }
+
+    </div>
+
+</div>

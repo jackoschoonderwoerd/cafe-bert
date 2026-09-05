@@ -1,0 +1,54 @@
+.name_price_buttons {
+    padding: 0.2rem;
+    border: 2px solid #e3a634;
+    color: #6b4820;
+    background-color: #e3a634;
+    margin-top: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    gap: 0.5rem;
+    .name_price {
+        flex-grow: 1;
+        width: 100%;
+        gap: 1rem;
+        display: flex;
+        justify-content: space-between;
+        .left {
+            .name {
+                text-transform: capitalize;
+                font-weight: 600;
+            }
+            .description {
+                font-style: italic;
+            }
+        }
+        .price {
+            .draft-beer-prices {
+                min-width: 180px;
+                // outline: 3px solid red;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                .price-draft {
+                    // outline: 1px solid black;
+                    justify-self: end;
+                }
+            }
+            .wine-prices {
+                min-width: 8rem;
+                // border: 2px solid white;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                .price-vessel {
+                    justify-self: end;
+                }
+            }
+        }
+    }
+    .icon-buttons {
+        // outline: 2px solid white;
+        display: flex;
+        gap: 1rem;
+        justify-content: end;
+    }
+}

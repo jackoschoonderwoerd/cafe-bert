@@ -1,0 +1,24 @@
+<form [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+
+        <input matInput
+            type="password"
+            formControlName="password"
+            autocomplete="current-password">
+    </mat-form-field>
+    <div class="buttons"></div>
+
+    <button mat-raised-button
+        type="submit"
+        [disabled]="loginForm.invalid">
+        Login
+    </button>
+    <button mat-raised-button
+        routerLink="drinks">
+        cancel
+    </button>
+
+</form>

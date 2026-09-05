@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    padding: 0.2rem;
+    // border: 2px solid white;
+    .spacer {
+        flex-grow: 1;
+    }
+    .glass-bottle {
+        // outline: 3px solid red;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        min-width: 8rem;
+
+        .vessel {
+            text-transform: capitalize;
+            justify-self: end;
+        }
+    }
+}

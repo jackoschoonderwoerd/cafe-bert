@@ -1,0 +1,110 @@
+<mat-dialog-content>
+    {{data.categoryId}}
+    <p class="adding-to">adding to: {{drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId)}}</p>
+    <form [formGroup]="form"
+        class="grid-form">
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>name nl</mat-label>
+                <input type="text"
+                    matInput
+                    formControlName="nameNl">
+            </mat-form-field>
+        </div>
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>name en</mat-label>
+                <input type="text"
+                    matInput
+                    formControlName="nameEn">
+            </mat-form-field>
+        </div>
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>description nl</mat-label>
+                <textarea formControlName="descriptionNl"
+                    matInput></textarea>
+            </mat-form-field>
+        </div>
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>description en</mat-label>
+                <textarea formControlName="descriptionEn"
+                    matInput></textarea>
+            </mat-form-field>
+        </div>
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>price</mat-label>
+                <input type="number"
+                    matInput
+                    formControlName="price">
+            </mat-form-field>
+        </div>
+        @if(drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId) === 'arend jan de wijnman' ||
+        drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId) === 'white wine'){
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>price bottle</mat-label>
+                <input type="number"
+                    matInput
+                    formControlName="priceBottle">
+            </mat-form-field>
+        </div>
+        }
+        @if(drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId) === 'draft beers'){
+
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>price 40 cl</mat-label>
+                <input type="number"
+                    matInput
+                    formControlName="priceCl40">
+            </mat-form-field>
+        </div>
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>price kleintje</mat-label>
+                <input type="number"
+                    matInput
+                    formControlName="priceKleintje">
+            </mat-form-field>
+        </div>
+        <div class="">
+            <mat-form-field>
+                <mat-label>price fluitje</mat-label>
+                <input type="number"
+                    matInput
+                    formControlName="priceFluitje">
+            </mat-form-field>
+        </div>
+        <div class="">
+
+            <mat-form-field>
+                <mat-label>price vaasje</mat-label>
+                <input type="number"
+                    matInput
+                    formControlName="priceVaasje">
+            </mat-form-field>
+        </div>
+        }
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="buttons">
+        <button mat-raised-button
+            mat-dialog-close>cancel</button>
+        <button mat-raised-button
+            [disabled]="form.invalid"
+            (click)="onAddDrink()">{{editmode ? 'update': 'add'}}&nbsp;drink</button>
+    </div>
+
+</mat-dialog-actions>

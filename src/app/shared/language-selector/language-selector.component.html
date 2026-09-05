@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="images">
+        <img [ngClass]="appStore.activeLanguage()==='en' ? 'active' : 'non-active'"
+            (click)="appStore.setActiveLanguage('en')"
+            src="flags/en-flag.png"
+            alt="">
+        <img [ngClass]="appStore.activeLanguage()==='nl' ? 'active' : 'non-active'"
+            (click)="appStore.setActiveLanguage('nl')"
+            src="flags/nl-flag.png"
+            alt="">
+    </div>
+</div>

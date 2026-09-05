@@ -1,0 +1,42 @@
+<mat-dialog-content>
+
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>order of appearance</mat-label>
+            <input type="number"
+                formControlName="orderOfAppearance"
+                matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>name nl</mat-label>
+            <input type="text"
+                matInput
+                formControlName="nameNl">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>name en</mat-label>
+            <input type="text"
+                matInput
+                formControlName="nameEn">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>description nl</mat-label>
+            <textarea formControlName="descriptionNl"
+                matInput></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>description en</mat-label>
+            <textarea formControlName="descriptionEn"
+                matInput></textarea>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="buttons">
+        <button mat-raised-button
+            mat-dialog-close>cancel</button>
+        <button mat-raised-button
+            (click)="onAddDrinkCategory()">{{editmode ? 'update': 'add'}}&nbsp;drink category</button>
+    </div>
+
+</mat-dialog-actions>

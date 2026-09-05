@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    gap: 1rem;
+    .images {
+        display: flex;
+        gap: 1rem;
+    }
+    img {
+        max-width: 2rem;
+        height: 1.5rem;
+    }
+}
+
+.active {
+    border: 2px solid yellow;
+}
+.non-active {
+    border: 2px solid transparent;
+}

@@ -1,0 +1,33 @@
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+    div {
+        // border: 2px solid red;
+        mat-form-field {
+            // border: 2px solid pink;
+            width: 100%;
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-form {
+        grid-template-columns: 1fr;
+    }
+}
+// form {
+//     max-height: 500px;
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+//     .left {
+//         display: flex;
+//         flex-direction: column;
+//     }
+
+//     .right {
+//         display: flex;
+//         flex-direction: column;
+//     }
+// }

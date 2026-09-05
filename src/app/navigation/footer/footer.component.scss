@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: var(--p-yellow);
+    border-top: 2px solid var(--p-black);
+    .content {
+        padding: 0.3rem;
+        display: flex;
+        gap: 0.5rem;
+        .cafe {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        .parisius {
+            font-family: "Alegreya", serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+    }
+}

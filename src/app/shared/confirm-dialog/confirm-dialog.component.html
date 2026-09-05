@@ -1,0 +1,25 @@
+<div class="title"
+    mat-dialog-title>confirm</div>
+<mat-dialog-content>
+    <div class="header">
+        Are you sure?
+    </div>
+    @if(data.message){
+    <div class="message">
+        {{data.message}}
+    </div>
+
+    } @else {
+    <div class="message">
+        You are about to permanently delete the selected item.
+    </div>
+    }
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button
+        class="form-button"
+        [mat-dialog-close]="false">abort</button>
+    <button mat-button
+        class="form-button"
+        [mat-dialog-close]="true">confirm</button>
+</mat-dialog-actions>

@@ -1,0 +1,21 @@
+<mat-nav-list>
+    <mat-list-item routerLink="home"
+        (click)="onCloseSidenav()">
+        <mat-icon>home</mat-icon>
+    </mat-list-item>
+    @for(menuItem of navigationStore.userMenuItems(); track menuItem.link) {
+    <mat-list-item (click)="onCloseSidenav()"
+        [routerLink]="menuItem.link">
+
+        {{appStore.activeLanguage() === 'nl' ? menuItem.nl : menuItem.en}}
+
+    </mat-list-item>
+    }
+</mat-nav-list>
+<div class="button-container">
+
+    <button mat-icon-button
+        class="close">
+        <mat-icon (click)="onCloseSidenav()">close</mat-icon>
+    </button>
+</div>

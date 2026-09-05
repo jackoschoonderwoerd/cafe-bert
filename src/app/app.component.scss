@@ -1,0 +1,83 @@
+mat-sidenav-container {
+    height: 100vh;
+
+    mat-sidenav {
+        width: 80%;
+        min-width: 21em;
+        max-width: 30rem;
+    }
+
+    mat-sidenav-content {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+        height: 100%;
+
+        app-toolbar {
+            grid-area: header;
+        }
+
+        main {
+            grid-area: main;
+            overflow: auto;
+            padding: 0.3rem;
+            background-color: var(--p-black);
+
+            @media (min-width: 40rem) {
+            }
+
+            @media (max-width: 40rem) {
+            }
+        }
+
+        app-footer {
+            grid-area: footer;
+            background-color: #cb9d06;
+            color: black;
+        }
+    }
+}
+// mat-sidenav-container {
+//     height: 100%;
+//     mat-sidenav {
+//         width: 80%;
+//         min-width: 21em;
+//         max-width: 30rem;
+//     }
+//     mat-sidenav-content {
+//         display: grid;
+//         grid-template-rows: auto 1fr auto;
+//         grid-template-areas:
+//             "header"
+//             "main"
+//             "footer";
+//         height: 100%;
+
+//         app-toolbar {
+//             grid-area: header;
+//         }
+//         main {
+//             overflow: auto;
+//             grid-area: main;
+//             @media (min-width: 40rem) {
+//                 background-size: cover;
+//                 display: block;
+//                 background-position: center;
+//             }
+//             @media (max-width: 40rem) {
+//                 background-color: var(--eb-blue);
+//             }
+//             .editmode {
+//             }
+//         }
+//         app-footer {
+//             grid-area: footer;
+//             // background-color: black;
+//             background-color: #cb9d06;
+//             color: black;
+//         }
+//     }
+// }
