@@ -24,7 +24,7 @@ interface FormValue {
         MatFormFieldModule,
         MatInput,
         ReactiveFormsModule,
-        JsonPipe
+
     ],
 
     templateUrl: './add-drink-dialog.component.html',

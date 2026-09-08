@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-// import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter } from 'rxjs';
 
@@ -9,32 +9,35 @@ import { filter } from 'rxjs';
 })
 export class UpdateService {
 
-    // private swUpdate = inject(SwUpdate);
-    // private snackBar = inject(MatSnackBar);
+    private swUpdate = inject(SwUpdate);
+    private snackBar = inject(MatSnackBar);
 
-    // constructor() {
-    //     if (!this.swUpdate.isEnabled) return;
 
-    //     this.swUpdate.versionUpdates
-    //         .pipe(
-    //             filter(
-    //                 (event): event is VersionReadyEvent =>
-    //                     event.type === 'VERSION_READY'
-    //             )
-    //         )
-    //         .subscribe(() => {
+    constructor() {
+        console.log('UpdateService instantiated');
+        console.log('Service worker enabled:', this.swUpdate.isEnabled);
+        if (!this.swUpdate.isEnabled) return;
 
-    //             const snack = this.snackBar.open(
-    //                 'Er is een nieuwe versie beschikbaar.',
-    //                 'BIJWERKEN',
-    //                 {
-    //                     duration: 0
-    //                 }
-    //             );
+        this.swUpdate.versionUpdates
+            .pipe(
+                filter(
+                    (event): event is VersionReadyEvent =>
+                        event.type === 'VERSION_READY'
+                )
+            )
+            .subscribe(() => {
 
-    //             snack.onAction().subscribe(() => {
-    //                 document.location.reload();
-    //             });
-    //         });
-    // }
+                const snack = this.snackBar.open(
+                    'Er is een nieuwe versie beschikbaar.',
+                    'BIJWERKEN',
+                    {
+                        duration: 0
+                    }
+                );
+
+                snack.onAction().subscribe(() => {
+                    document.location.reload();
+                });
+            });
+    }
 }

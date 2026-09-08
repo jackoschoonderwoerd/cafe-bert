@@ -11,7 +11,7 @@ import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'app-sidenav',
-    imports: [MatIconModule, MatListModule, RouterLink, MatButtonModule, JsonPipe],
+    imports: [MatIconModule, MatListModule, RouterLink, MatButtonModule],
     templateUrl: './sidenav.component.html',
     styleUrl: './sidenav.component.scss'
 })

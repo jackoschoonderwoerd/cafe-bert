@@ -18,7 +18,8 @@ export class NavigationService {
             nl: 'menu',
             en: 'menu',
             link: 'menu'
-        }
+        },
+
     ]
     getMenuItems() {
         return this.menuItems

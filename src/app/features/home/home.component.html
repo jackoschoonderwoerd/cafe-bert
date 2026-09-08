@@ -2,82 +2,124 @@
     <img src="/images/parisius-logo.webp"
         alt="">
     <div class="contact">
-        <div class="name">
+        <!-- <div class="name">
             Café Parisius
 
-        </div>
-        <div class="address">
-            Borneostraat 112
+        </div> -->
+        <div class="location_address_zip-code_city">
+            <mat-icon routerLink="/location"
+                class="location">location_on</mat-icon>
+            <div class="address_zip-code_city">
+                <div class="address">
+                    Borneostraat 112
 
-        </div>
-        <div class="zip-code_city">
-            <div class="zip-code">
-                1094 CR,
+                </div>
+                <div class="zip-code_city">
+                    <div class="zip-code">
+                        1094 CR,
 
+                    </div>
+                    <div class="city">
+                        Amsterdam
+                    </div>
+
+                </div>
             </div>
-            <div class="city">
-                Amsterdam
+        </div>
+        <div class="email">
+            <a href="mailto:werkenbijbert&gmail.com">
+
+                <mat-icon>email</mat-icon>
+            </a>
+            <div class="email-address">
+                werkenbijbert&#64;gmail.com
             </div>
         </div>
+        <!-- <a class="phone"
+            href="tel:+31203700207">
+            <mat-icon>local_phone</mat-icon>
+            <div class="number">020 370 02 07</div>
+        </a> -->
+        <div class="phone">
+            <a href="tel:+31203700207">
+                <mat-icon> local_phone</mat-icon>
+            </a>
+            <div class="number">020 370 02 07</div>
+        </div>
 
-        E-mail: werkenbijbert&#64;gmail.com
-        Telefoon: 020 370 02 07
-        Instagram: &#64;cafebertjavaplein
+        <!-- Instagram: &#64;cafebertjavaplein -->
+    </div>
+    <div class="social-media">
+        <app-social-media></app-social-media>
     </div>
     <ul class="opening-hours">
         <p class="list-header">
+            {{appStore.activeLanguage() === 'nl' ? 'Openingstijden' : 'Opening Hours'}}
 
-            Openingstijden
         </p>
+        @for(openingTime of openingTimes; track $index){
         <li>
-            Ma. 16:00 - 01:00
+            <div class="day-name">{{appStore.activeLanguage() === 'nl' ? openingTime.nl : openingTime.en}}</div>
+            <div class="hours">
+                <div class="open">{{appStore.activeLanguage() === 'nl' ? openingTime.openNl : openingTime.openEn}}</div>
+                <div class="spacer">&nbsp;-&nbsp;</div>
+                <div class="close">{{appStore.activeLanguage() === 'nl' ? openingTime.closeNl : openingTime.closeEn}}</div>
+            </div>
         </li>
-        <li>
-            Ma. 16:00 - 01:00
-
-        </li>
-        <li>
-
-            Di. 16:00 - 01:00
-        </li>
-        <li>
-
-            Wo. 16:00 - 01:00
-        </li>
-        <li>
-
-            Do. 16:00 - 01:00
-        </li>
-        <li>
-
-            Vr. 16:00 - 03:00
-        </li>
-        <li>
-
-            Za. 11:00 - 03:00
-        </li>
-        <li>
-
-            Zo. 11:00 - 01:00
-        </li>
+        }
     </ul>
+    @if(appStore.activeLanguage() === 'nl'){
+    <p>
+        Of je nu langskomt voor een goed gesprek, een stevige borrel of gewoon even wilt ontspannen: bij ons ben je welkom.
+        We tappen een ruime selectie bieren, schenken de beste jenevers en andere sterke dranken, en ons keukentje staat de
+        hele dag voor je klaar met bijvoorbeeld een daghap of bittergarnituur.
+    </p>
+    <p>
+        Vragen of reserveren? Mail ons via werkenbijbert&#64;gmail.com of bel gerust even naar 020 370 02 07.
+    </p>
     <div class="description">
-        <p>
 
-            Café Bert is een bruine buurtkroeg met Indonesische wortels, midden in het hart van Amsterdam-Oost. Vernoemd naar opa Bert Simon –
-            een man met een warm hart en een groot gevoel voor gezelligheid – is ons café een vertrouwde plek op de Borneostraat 112.
+        <p>
+            Kid Dynamite (1911–1963) was de artiestennaam van de Surinaams-Nederlandse tenorsaxofonist Arthur Parisius, een van de meest markante figuren uit de naoorlogse Nederlandse jazz. Hij werd geboren in Suriname en kwam als jonge man naar Nederland, waar hij naam maakte in de jazzclubs van Amsterdam en Rotterdam.
+        </p>
+        <img src="/images/kid-dynamite.png"
+            alt="">
+        <p>
+            Met zijn krachtige, energieke spel, beïnvloed door Amerikaanse tenorsaxofonisten als Coleman Hawkins, werd Kid Dynamite vooral in de jaren veertig en vijftig een populaire verschijning. Hij was jarenlang te horen in het legendarische Casablanca aan de Amsterdamse Zeedijk en speelde met musici als Boy Edgar, Teddy Cotton en Cees Slinger. In zijn muziek vermengde hij Amerikaanse swing en jazz met invloeden uit de Surinaamse muziek, met name kaseko — een voor die tijd bijzondere combinatie.
         </p>
         <p>
+            Kid Dynamite overleed in 1963, op 52-jarige leeftijd, na een auto-ongeluk in Duitsland. Tegenwoordig wordt hij herinnerd als een van de pioniers van zowel de Nederlandse jazz als de Surinaamse jazz in Nederland.
 
-            Of je nu langskomt voor een goed gesprek, een stevige borrel of gewoon even wilt ontspannen: bij ons ben je welkom.
-            We tappen een ruime selectie bieren, schenken de beste jenevers en andere sterke dranken, en ons keukentje staat de
-            hele dag voor je klaar met bijvoorbeeld een daghap of bittergarnituur.
         </p>
-        <p>
-
-            Vragen of reserveren? Mail ons via werkenbijbert&#64;gmail.com of bel gerust even naar 020 370 02 07.
-        </p>
-
-
     </div>
+
+
+
+    } @else {
+    <p>
+        Whether you’re stopping by for a good conversation, a stiff drink, or simply to relax for a while, you’re always welcome here.
+
+    </p>
+    <p>
+        We have a wide selection of beers on tap, serve some of the finest jenevers and other spirits, and our kitchen is open all day, offering everything from a daily special to traditional Dutch bar snacks.
+    </p>
+    <div class="description">
+
+        <p>
+            Kid Dynamite (1911–1963) was the stage name of Surinamese-Dutch tenor saxophonist Arthur Parisius, one of the most distinctive figures in post-war Dutch jazz. Born in Suriname, he came to the Netherlands as a young man and built his reputation in the jazz clubs of Amsterdam and Rotterdam.
+        </p>
+        <img src="/images/kid-dynamite.png"
+            alt="">
+        <p>
+            A powerful, energetic player influenced by American tenor saxophonists such as Coleman Hawkins, Kid Dynamite became particularly popular during the 1940s and 1950s. He was a familiar presence at Amsterdam’s legendary Casablanca on the Zeedijk and played with musicians including Boy Edgar, Teddy Cotton and Cees Slinger. His music combined American swing and jazz with elements of Surinamese music, particularly kaseko—an unusual mixture at the time and an early example of what would later be called world music.
+        </p>
+        <p>
+            Kid Dynamite died in 1963, aged 52, following a car accident in Germany. He is now remembered as one of the pioneers of both Dutch jazz and Surinamese jazz in the Netherlands.
+        </p>
+    </div>
+
+
+
+    }
+
 </div>

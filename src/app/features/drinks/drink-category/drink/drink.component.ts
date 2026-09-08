@@ -18,7 +18,6 @@ import { AddDrinkDialogComponent } from '../../../../admin/add-drink-dialog/add-
         CurrencyPipe,
         MatIconModule,
         MatButtonModule,
-        JsonPipe
     ],
     templateUrl: './drink.component.html',
     styleUrl: './drink.component.scss'

@@ -15,7 +15,7 @@ import { WineBottleHeaderComponent } from './wine-bottle-header/wine-bottle-head
 @Component({
     selector: 'app-drink-category',
     imports: [
-        JsonPipe,
+
         MatButtonModule,
         MatIconModule,
         DrinkComponent,

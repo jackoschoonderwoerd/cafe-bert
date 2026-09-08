@@ -10,17 +10,79 @@
     max-width: 30rem;
     margin: auto;
     .contact {
-        .zip-code_city {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        .location_address_zip-code_city {
             display: flex;
+            align-items: center;
             gap: 0.5rem;
+            .location {
+                color: var(--p-blue);
+                font-size: 2rem;
+                width: 2rem;
+                height: 2rem;
+            }
+            .address_zip-code_city {
+                display: flex;
+                flex-direction: column;
+                .address {
+                }
+                .zip-code_city {
+                    display: flex;
+                    gap: 0.5rem;
+                }
+            }
+        }
+    }
+    .email {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        mat-icon {
+            color: var(--p-blue);
+            font-size: 2rem;
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+    .phone {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        // border: 1px solid red;
+        mat-icon {
+            color: var(--p-blue);
+            font-size: 2rem;
+            width: 2rem;
+            height: 2rem;
         }
     }
     .opening-hours {
+        width: 100%;
+        max-width: 15rem;
+        margin: auto;
         .list-header {
             font-weight: bold;
             font-size: 1.2rem;
         }
+        li {
+            display: flex;
+            justify-content: space-between;
+            .hours {
+                display: flex;
+            }
+        }
     }
     .description {
+        padding: 0.5rem;
+        background-color: var(--p-purple-light);
+        color: var(--p-black);
+        img {
+            width: 100%;
+        }
     }
+}
+p {
+    margin: 0 0 0.5rem 0;
 }

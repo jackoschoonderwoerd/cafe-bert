@@ -25,6 +25,11 @@ export const initialNavigationSlice: NavigationSlice = {
             nl: 'menu',
             en: 'menu',
             link: 'menu'
+        },
+        {
+            nl: 'locatie',
+            en: 'location',
+            link: 'location'
         }
     ],
     adminMenuItems: []

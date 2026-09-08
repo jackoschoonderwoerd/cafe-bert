@@ -20,6 +20,11 @@ export const routes: Routes = [
             .then(c => c.MenuComponent)
     },
     {
+        path: 'location',
+        loadComponent: () => import('./features/location/location.component')
+            .then(c => c.LocationComponent)
+    },
+    {
         path: 'login',
         loadComponent: () => import('./auth/login/login.component')
             .then(c => c.LoginComponent)

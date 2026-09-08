@@ -16,5 +16,9 @@
 
         display: flex;
         justify-content: right;
+        button {
+            background-color: var(--p-blue) !important;
+            color: var(--p-yellow);
+        }
     }
 }
