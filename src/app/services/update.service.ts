@@ -14,9 +14,14 @@ export class UpdateService {
 
 
     constructor() {
-        console.log('UpdateService instantiated');
-        console.log('Service worker enabled:', this.swUpdate.isEnabled);
+        // console.log('UpdateService instantiated');
+        // console.log('Service worker enabled:', this.swUpdate.isEnabled);
+
         if (!this.swUpdate.isEnabled) return;
+
+        this.swUpdate.versionUpdates.subscribe(event => {
+            console.log('SW EVENT:', event);
+        });
 
         this.swUpdate.versionUpdates
             .pipe(
@@ -26,16 +31,14 @@ export class UpdateService {
                 )
             )
             .subscribe(() => {
-
                 const snack = this.snackBar.open(
-                    'Er is een nieuwe versie beschikbaar.',
-                    'BIJWERKEN',
-                    {
-                        duration: 0
-                    }
+                    'There\'s a new version available.',
+                    'RELOAD',
+                    { duration: 0 }
                 );
 
-                snack.onAction().subscribe(() => {
+                snack.onAction().subscribe(async () => {
+                    await this.swUpdate.activateUpdate();
                     document.location.reload();
                 });
             });

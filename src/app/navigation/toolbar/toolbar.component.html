@@ -2,8 +2,16 @@
     <div class="left">
         <mat-icon class="menu"
             (click)="onMenu()">menu</mat-icon>
-        <mat-icon class="home"
-            routerLink="home">home</mat-icon>
+
+        <button mat-icon-button
+            class="home"
+            routerLinkActive="link-active">
+            <mat-icon routerLink="home">home</mat-icon>
+        </button>
+        @if(authStore.isLoggedIn()){
+        <mat-icon routerLink="/analytics"> vpn_key</mat-icon>
+        }
+
         @for(menuItem of navigationStore.userMenuItems();track $index) {
         <button class="menu-buttons"
             routerLinkActive="link-active"
@@ -20,17 +28,18 @@
     </div>
     <div class="right">
         <app-language-selector></app-language-selector>
-        @if(!appStore.isLoggedIn()) {
+        <!-- @if(!authStore.isLoggedIn()) {
         <button mat-icon-button
             routerLink="login">
             <mat-icon>login</mat-icon>
         </button>
         }
-        @if(appStore.isLoggedIn()) {
+        @if(authStore.isLoggedIn()) {
         <button mat-icon-button
-            (click)="appStore.logOut()">
+            type="button"
+            (click)="authStore.logout()">
             <mat-icon>logout</mat-icon>
         </button>
-        }
+        } -->
     </div>
 </mat-toolbar>

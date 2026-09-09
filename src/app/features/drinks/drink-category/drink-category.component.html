@@ -5,13 +5,13 @@
     <div class="header">
         <div class="header-top">
             <div class="header-top-left">
-                @if(appStore.isLoggedIn()) {
+                @if(authStore.isLoggedIn()) {
                 <div class="order-of-appearance">{{c.orderOfAppearance}}</div>
                 }
                 <!-- <div class="if">{{c.id}}</div> -->
                 <div class="name">{{appStore.activeLanguage()  === 'nl' ? c?.nameNl: c?.nameEn}}</div>
             </div>
-            @if(appStore.isLoggedIn()){
+            @if(authStore.isLoggedIn()){
             <div class="icon-buttons">
                 <button mat-icon-button
                     (click)="drinkCateegoryStore.deleteDrinkCategory(c.id)">
@@ -45,7 +45,7 @@
             [drink]="consumption"></app-drink>
         }
     </div>
-    @if(appStore.isLoggedIn()){
+    @if(authStore.isLoggedIn()){
     <div class="buttons">
         <button mat-raised-button
             (click)="onAddDrink()">add item to {{appStore.activeLanguage()  === 'nl' ? c?.nameNl: c?.nameEn}}</button>

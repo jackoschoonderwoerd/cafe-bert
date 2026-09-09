@@ -10,6 +10,7 @@ import { DrinkCategoryStore } from '../drink-category-store/drink-category-store
 import { ConfirmService } from '../../../../services/confirm.service';
 import { SnackbarService } from '../../../../services/snackbar.service';
 import { AddDrinkDialogComponent } from '../../../../admin/add-drink-dialog/add-drink-dialog.component';
+import { AuthStore } from '../../../../auth/auth.store';
 
 @Component({
     selector: 'app-drink',
@@ -33,6 +34,7 @@ export class DrinkComponent {
     sb = inject(SnackbarService)
 
     appStore = inject(AppStore);
+    authStore = inject(AuthStore)
     drinkCategoriesStore = inject(DrinkCategoryStore)
     matDialog = inject(MatDialog)
 

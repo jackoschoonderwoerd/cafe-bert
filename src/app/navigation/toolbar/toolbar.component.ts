@@ -9,6 +9,7 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationService } from '../navigation.service';
 import { MenuItem } from '../../models/menu-item.model';
+import { AuthStore } from '../../auth/auth.store';
 
 @Component({
     selector: 'app-toolbar',
@@ -25,6 +26,7 @@ import { MenuItem } from '../../models/menu-item.model';
 })
 export class ToolbarComponent implements OnInit {
     appStore = inject(AppStore);
+    authStore = inject(AuthStore)
     navigationStore = inject(NavigationStore);
     // navigationService = inject(NavigationService);
     menuItems: MenuItem[] = []

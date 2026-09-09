@@ -11,6 +11,7 @@ import { AddDrinkDialogComponent } from '../../../admin/add-drink-dialog/add-dri
 import { DrinkComponent } from './drink/drink.component';
 import { DraftBeerHeaderComponent } from './draft-beer-header/draft-beer-header.component';
 import { WineBottleHeaderComponent } from './wine-bottle-header/wine-bottle-header.component';
+import { AuthStore } from '../../../auth/auth.store';
 
 @Component({
     selector: 'app-drink-category',
@@ -28,6 +29,7 @@ import { WineBottleHeaderComponent } from './wine-bottle-header/wine-bottle-head
 export class DrinkCategoryComponent {
     category = input.required<DrinkCategory>()
     appStore = inject(AppStore);
+    authStore = inject(AuthStore)
     drinkCateegoryStore = inject(DrinkCategoryStore)
     matDialog = inject(MatDialog)
     // data = inject(MAT_DIALOG_DATA, { optional: true });
@@ -49,8 +51,8 @@ export class DrinkCategoryComponent {
             case 'draft beers 40cl':
             case '0.0%':
                 return {
-                    'backgroundColor': 'var(--p-purple)',
-                    'color': 'var(--p-balck)',
+                    'backgroundColor': 'var(--p-purple-slightly-lighter)',
+                    'color': 'var(--p-black)',
                     'font-weight': 'bold'
                 }
             case 'white wine':
@@ -58,7 +60,7 @@ export class DrinkCategoryComponent {
             case 'sparkling':
             case 'arend jan de wijnman':
                 return {
-                    'backgroundColor': 'var(--p-blue)',
+                    'backgroundColor': 'var(--p-blue-slightly-lighter)',
                     'color': 'var(--p-black)',
                     'font-weight': 'bold'
                 }

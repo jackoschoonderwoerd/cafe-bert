@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <ul>
+        <div class="ul-header">Visits by date and satus</div>
+        <hr>
+        <div class="list-header">
+            <div class="header-date">Date</div>
+            <div class="header-not-logged-in">Not logged in</div>
+            <div class="header-logged-in">Logged in</div>
+            <div class="header-total">Total</div>
+        </div>
+        @for (day of analytics(); track day.id) {
+        <li>
+            <div class="day">{{day.id}}</div>
+            <div class="logged-out">{{day.loggedOut}}</div>
+            <div class="logged-in">{{day.loggedIn}}</div>
+            <div class="total">{{day.total}}</div>
+        </li>
+        }
+    </ul>
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Not logged in</th>
+                <th>Logged in</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (day of analytics(); track day.id) {
+            <tr>
+                <td>{{ day.id }}</td>
+                <td>{{ day.loggedOut }}</td>
+                <td>{{ day.loggedIn }}</td>
+                <td>{{ day.total }}</td>
+            </tr>
+            }
+        </tbody>
+    </table> -->
+</div>

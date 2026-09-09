@@ -9,6 +9,7 @@ import { FooterComponent } from './navigation/footer/footer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { UpdateService } from './services/update.service';
+import { AnalyticsService } from './auth/analytics.service';
 
 @Component({
     selector: 'app-root',
@@ -28,9 +29,11 @@ export class AppComponent implements OnInit {
     drinkCategoryStore = inject(DrinkCategoryStore);
 
     // private updateService = inject(UpdateService);
+    private analytics = inject(AnalyticsService);
 
     constructor() {
         inject(UpdateService);
+        this.analytics.registerVisit();
     }
 
     ngOnInit(): void {

@@ -4,8 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { AppStore } from '../../app-store/app.store';
+import { AuthStore } from '../auth.store';
 
 @Component({
     selector: 'app-login',
@@ -23,11 +24,28 @@ import { AppStore } from '../../app-store/app.store';
 
 export class LoginComponent {
     private fb = inject(FormBuilder);
+    private authStore = inject(AuthStore);
+    private router = inject(Router);
+
     appStore = inject(AppStore)
     loginForm = this.fb.nonNullable.group({
-        password: ['parisius', Validators.required]
+        email: ['jackoboes@gmail.com', Validators.required],
+        password: ['123456', Validators.required]
     });
 
+    async login() {
+        try {
+            await this.authStore.login(
+                this.loginForm.value.email!,
+                this.loginForm.value.password!
+            );
+
+            await this.router.navigate(['/drinks']);
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     onSubmit() {
         if (this.loginForm.invalid) return;
@@ -37,7 +55,7 @@ export class LoginComponent {
 
         console.log(password);
         this.appStore.logIn(password)
-        // Do your authentication here
+
     }
 
 }

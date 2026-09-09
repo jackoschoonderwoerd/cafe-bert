@@ -6,9 +6,12 @@
     justify-content: space-between;
     background-color: var(--p-yellow);
     mat-nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
         mat-list-item {
-            color: white;
             text-transform: uppercase;
+            background-color: var(--p-blue-light) !important;
         }
     }
     .button-container {
@@ -17,8 +20,8 @@
         display: flex;
         justify-content: right;
         button {
-            background-color: var(--p-blue) !important;
-            color: var(--p-yellow);
+            background-color: var(--p-blue-light) !important;
+            // color: var(--p-yellow);
         }
     }
 }

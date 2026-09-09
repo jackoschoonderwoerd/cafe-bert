@@ -3,6 +3,7 @@
     justify-content: center;
     background-color: var(--p-yellow);
     border-top: 2px solid var(--p-black);
+    position: relative;
     .content {
         padding: 0.3rem;
         display: flex;
@@ -17,6 +18,16 @@
             font-family: "Alegreya", serif;
             font-weight: 400;
             font-size: 1.2rem;
+        }
+    }
+    .auth {
+        position: absolute;
+        right: 0.5rem;
+        bottom: 5px;
+        button {
+            cursor: pointer;
+            background-color: var(--p-blue-light) !important;
+            border-radius: 7px;
         }
     }
 }

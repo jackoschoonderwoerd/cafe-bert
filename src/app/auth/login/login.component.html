@@ -1,5 +1,13 @@
 <form [formGroup]="loginForm"
-    (ngSubmit)="onSubmit()">
+    (ngSubmit)="login()">
+    <div class="form-header">admin only</div>
+    <mat-form-field appearance="outline">
+        <mat-label>email</mat-label>
+
+        <input matInput
+            type="email"
+            formControlName="email">
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
@@ -16,8 +24,9 @@
         [disabled]="loginForm.invalid">
         Login
     </button>
-    <button mat-raised-button
-        routerLink="drinks">
+    <button type="button"
+        mat-raised-button
+        routerLink="/drinks">
         cancel
     </button>
 

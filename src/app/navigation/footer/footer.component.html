@@ -3,4 +3,13 @@
         <div class="cafe">Café</div>
         <div class="parisius">Parisius</div>
     </div>
+    <div class="auth">
+        @if(!authStore.isLoggedIn()){
+        <button class="login"
+            routerLink="/login">log in</button>
+        }@else {
+        <button class="logout"
+            (click)="authStore.logout()">log out</button>
+        }
+    </div>
 </div>
