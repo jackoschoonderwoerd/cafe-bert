@@ -9,7 +9,8 @@ export interface Consumption {
     priceKleintje?: number;
     priceFluitje?: number;
     priceVaasje?: number;
-    priceCl40?: number
+    priceCl40?: number;
+    hidden?: boolean;
 
 }
 

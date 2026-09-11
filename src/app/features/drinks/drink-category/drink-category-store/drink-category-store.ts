@@ -140,6 +140,7 @@ export const DrinkCategoryStore = signalStore(
                 // console.log(nameEn)
                 return nameEn
             },
+
             async updateDrinkCategoryProperties(
                 categoryId: string,
                 orderOfAppearance: number,
@@ -208,6 +209,38 @@ export const DrinkCategoryStore = signalStore(
                     sb.openSnackbar(`operation failed due to: ${(err as FirebaseError).message}`);
                 }
 
+            },
+            async hideDrink(categoryId: string, consumptionIndex: number, hide: boolean) {
+                console.log(categoryId, consumptionIndex, hide);
+                const categories = store.drinkCategories();
+                const categoryIndex = categories.findIndex(c => c.id === categoryId);
+                const updatedCategories = structuredClone(categories);
+                const category = updatedCategories[categoryIndex]
+                if (categoryIndex === -1) {
+                    sb.openSnackbar('no drink category found');
+                    return; // <-- now clearly a Promise<void> because of async
+                }
+                if (hide) {
+                    category.consumptions[consumptionIndex].hidden = true
+                    console.log(category.consumptions[consumptionIndex].hidden)
+                    // patchState(store, { drinkCategories: updatedCategories });
+                } else if (!hide) {
+                    // const updatedCategories = structuredClone(categories);
+                    // const category = updatedCategories[categoryIndex]
+                    category.consumptions[consumptionIndex].hidden = false
+                    // console.log(category.consumptions[consumptionIndex].hidden)
+                }
+                patchState(store, { drinkCategories: updatedCategories });
+
+                const path = `cafe-bert/drinks/categories/${categoryId}`;
+
+                try {
+                    await fs.updateField(path, 'consumptions', category.consumptions);
+                    sb.openSnackbar('visibility drink updated');
+                } catch (err) {
+                    console.error(err);
+                    sb.openSnackbar(`operation failed due to: ${(err as FirebaseError).message}`);
+                }
             },
 
             async removeDrinkFromCategory(categoryId: string, drinkIndex: number): Promise<void> {

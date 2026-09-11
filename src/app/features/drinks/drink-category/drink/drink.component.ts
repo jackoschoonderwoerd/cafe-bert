@@ -19,6 +19,7 @@ import { AuthStore } from '../../../../auth/auth.store';
         CurrencyPipe,
         MatIconModule,
         MatButtonModule,
+        JsonPipe
     ],
     templateUrl: './drink.component.html',
     styleUrl: './drink.component.scss'
@@ -35,7 +36,7 @@ export class DrinkComponent {
 
     appStore = inject(AppStore);
     authStore = inject(AuthStore)
-    drinkCategoriesStore = inject(DrinkCategoryStore)
+    drinkCategoryStore = inject(DrinkCategoryStore)
     matDialog = inject(MatDialog)
 
     onEdit() {
@@ -52,7 +53,7 @@ export class DrinkComponent {
     onDelete() {
         this.cf.getConfirmation().subscribe((status: boolean) => {
             if (status) {
-                this.drinkCategoriesStore.removeDrinkFromCategory(
+                this.drinkCategoryStore.removeDrinkFromCategory(
                     this.categoryId(), this.index()
                 )
             } else {
@@ -60,10 +61,14 @@ export class DrinkComponent {
             }
         })
     }
+    onHide(hide: boolean) {
+        this.drinkCategoryStore.hideDrink(this.categoryId(), this.index(), hide)
+
+    }
     onMoveUp() {
-        this.drinkCategoriesStore.moveUp(this.categoryId(), this.drink())
+        this.drinkCategoryStore.moveUp(this.categoryId(), this.drink())
     }
     onMoveDown() {
-        this.drinkCategoriesStore.moveDown(this.categoryId(), this.drink())
+        this.drinkCategoryStore.moveDown(this.categoryId(), this.drink())
     }
 }

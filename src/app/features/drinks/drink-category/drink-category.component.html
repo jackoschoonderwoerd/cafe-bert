@@ -38,11 +38,23 @@
         <app-wine-bottle-header></app-wine-bottle-header>
         }
         @for(consumption of c.consumptions; track $index) {
+        <!-- admin -->
+        @if(authStore.isLoggedIn()){
+
         <app-drink [categoryId]="c.id"
             [first]="$first"
             [last]="$last"
             [index]="$index"
             [drink]="consumption"></app-drink>
+        }
+        <!-- visitor -->
+        @if(!authStore.isLoggedIn() && !consumption.hidden){
+        <app-drink [categoryId]="c.id"
+            [first]="$first"
+            [last]="$last"
+            [index]="$index"
+            [drink]="consumption"></app-drink>
+        }
         }
     </div>
     @if(authStore.isLoggedIn()){
