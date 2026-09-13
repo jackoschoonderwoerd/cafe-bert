@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavigationStore } from '../navigation-store/navigation.store';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { MatIconModule } from '@angular/material/icon';
-import { NavigationService } from '../navigation.service';
+import { NavigationService } from '../XXXnavigation.service';
 import { MenuItem } from '../../models/menu-item.model';
 import { AuthStore } from '../../auth/auth.store';
 

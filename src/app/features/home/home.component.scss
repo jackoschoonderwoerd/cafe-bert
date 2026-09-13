@@ -1,4 +1,5 @@
 .wrapper {
+    min-height: 100dvh;
     background-color: var(--p-yellow);
     // background-color: white;
     color: var(--p-black);
@@ -9,6 +10,70 @@
     width: 100%;
     max-width: 30rem;
     margin: auto;
+    .dinks-bites-jazz {
+        font-size: 1.3rem;
+        font-weight: 500;
+        // border: 1px solid red;
+        text-align: center;
+    }
+    .slogan {
+        text-align: center;
+        font-style: italic;
+    }
+    .opening-hours {
+        width: 100%;
+        max-width: 17rem;
+        margin: 0 auto;
+        .list-header {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        li {
+            text-transform: capitalize;
+            display: flex;
+            justify-content: space-between;
+            .hours-nl {
+                max-width: 7rem;
+                display: flex;
+                // justify-content: space-evenly;
+                .open {
+                    width: 5rem;
+                    // border: 1px solid red;
+                }
+                .spacer {
+                    // border: 1px solid red;
+                }
+                .close {
+                    // border: 1px solid red;
+                    width: 5rem;
+                    text-align: end;
+                }
+            }
+            .hours-en {
+                display: flex;
+                justify-content: space-evenly;
+                .open {
+                    width: 5rem;
+                    // border: 1px solid red;
+                }
+                .spacer {
+                    // border: 1px solid red;
+                }
+                .close {
+                    width: 5rem;
+                    text-align: end;
+                }
+            }
+        }
+    }
+    .social-media {
+        // border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
     .contact {
         display: flex;
         flex-direction: column;
@@ -38,12 +103,18 @@
     .email {
         display: flex;
         align-items: center;
+        // border: 1px solid red;
         gap: 0.5rem;
-        mat-icon {
-            color: var(--p-blue);
-            font-size: 2rem;
-            width: 2rem;
-            height: 2rem;
+        a {
+            mat-icon {
+                color: var(--p-blue);
+                font-size: 2rem;
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        .email-address {
+            margin-bottom: 5px;
         }
     }
     .phone {
@@ -58,22 +129,7 @@
             height: 2rem;
         }
     }
-    .opening-hours {
-        width: 100%;
-        max-width: 15rem;
-        margin: auto;
-        .list-header {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        li {
-            display: flex;
-            justify-content: space-between;
-            .hours {
-                display: flex;
-            }
-        }
-    }
+
     .description {
         padding: 0.5rem;
         background-color: var(--p-purple-light);

@@ -6,6 +6,11 @@ export const routes: Routes = [
         path: '', redirectTo: 'home', pathMatch: 'full'
     },
     {
+        path: 'welcome',
+        loadComponent: () => import('./features/welcome/welcome.component')
+            .then(c => c.WelcomeComponent)
+    },
+    {
         path: 'home',
         loadComponent: () => import('./features/home/home.component')
             .then(c => c.HomeComponent)
@@ -35,6 +40,11 @@ export const routes: Routes = [
         canActivate: [authGuard],
         loadComponent: () => import('./admin/analytics/analytics.component')
             .then(c => c.AnalyticsComponent)
+    },
+    {
+        path: 'dutch-gin'
+        , loadComponent: () => import('./features/dutch-gin/dutch-gin.component')
+            .then(c => c.DutchGinComponent)
     },
     {
         path: '**',

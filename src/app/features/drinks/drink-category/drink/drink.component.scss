@@ -51,5 +51,18 @@
         display: flex;
         gap: 1rem;
         justify-content: end;
+        .small-icon-button {
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+
+            mat-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 20px;
+                line-height: 20px;
+                margin-bottom: 3px;
+            }
+        }
     }
 }

@@ -57,6 +57,7 @@
         @if(!first()){
 
         <button mat-icon-button
+            class="small-icon-button"
             (click)="onMoveUp()">
             <mat-icon>arrow_drop_up</mat-icon>
         </button>
@@ -64,6 +65,7 @@
         @if(!last()) {
 
         <button mat-icon-button
+            class="small-icon-button"
             (click)="onMoveDown()">
             <mat-icon>arrow_drop_down</mat-icon>
         </button>
@@ -71,22 +73,26 @@
         @if(!drink().hidden){
 
         <button (click)="onHide(true)"
-            mat-icon-button>
+            mat-icon-button
+            class="small-icon-button">
 
             <mat-icon>visibility</mat-icon>
         </button>
         } @else {
         <button mat-icon-button
+            class="small-icon-button"
             (click)="onHide(false)">
 
             <mat-icon>visibility_off</mat-icon>
         </button>
         }
         <button mat-icon-button
+            class="small-icon-button"
             (click)="onDelete()">
             <mat-icon>delete</mat-icon>
         </button>
         <button mat-icon-button
+            class="small-icon-button"
             (click)="onEdit()">
             <mat-icon>edit</mat-icon>
         </button>

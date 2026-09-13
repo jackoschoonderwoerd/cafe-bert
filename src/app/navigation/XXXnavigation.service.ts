@@ -10,6 +10,11 @@ export class NavigationService {
 
     menuItems: MenuItem[] = [
         {
+            nl: 'welkom',
+            en: 'welcome',
+            link: 'welcome'
+        },
+        {
             nl: 'dranken',
             en: 'drinks',
             link: 'drinks'

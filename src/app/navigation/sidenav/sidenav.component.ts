@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
 import { MenuItem } from '../../models/menu-item.model';
-import { NavigationService } from '../navigation.service';
+import { NavigationService } from '../XXXnavigation.service';
 import { AppStore } from '../../app-store/app.store';
 import { MatButtonModule } from '@angular/material/button';
 import { NavigationStore } from '../navigation-store/navigation.store';

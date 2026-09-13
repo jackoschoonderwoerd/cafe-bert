@@ -17,6 +17,11 @@ export interface NavigationSlice {
 export const initialNavigationSlice: NavigationSlice = {
     userMenuItems: [
         {
+            nl: 'welkom',
+            en: 'welcome',
+            link: 'welcome'
+        },
+        {
             nl: 'dranken',
             en: 'drinks',
             link: 'drinks'
@@ -30,7 +35,13 @@ export const initialNavigationSlice: NavigationSlice = {
             nl: 'locatie',
             en: 'location',
             link: 'location'
-        }
+        },
+        {
+            nl: 'jenever',
+            en: 'dutch gin',
+            link: 'dutch-gin'
+        },
+
     ],
     adminMenuItems: []
 }
