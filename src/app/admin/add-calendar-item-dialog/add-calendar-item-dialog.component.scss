@@ -1,0 +1,40 @@
+.wrapper {
+    width: 100%;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+
+    max-height: 90dvh;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    mat-dialog-content {
+        max-height: 75dvh;
+        overflow-y: auto;
+        mat-form-field {
+            width: 100%;
+        }
+
+        .starts_ends {
+            display: flex;
+            gap: 1rem;
+            .starts,
+            .ends {
+                flex-grow: 1;
+            }
+        }
+        .quill-text-editors {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            // border: 1px solid red;
+        }
+        .buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+    }
+}

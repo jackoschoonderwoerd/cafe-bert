@@ -16,11 +16,9 @@ import { map } from 'rxjs';
 @Component({
     selector: 'app-quick-access-category',
     imports: [
-        JsonPipe,
         MatButtonModule,
         MatIconModule,
         RouterModule,
-        CurrencyPipe,
         DrinkCategoryComponent
     ],
     templateUrl: './quick-access-category.component.html',

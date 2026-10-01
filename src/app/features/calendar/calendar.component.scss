@@ -1,0 +1,52 @@
+.wrapper {
+    padding: 0.5rem;
+    min-height: 100dvh;
+    background-color: var(--p-yellow);
+    width: 100%;
+    max-width: 30rem;
+    margin: auto;
+    .add-button {
+        margin-bottom: 1rem;
+    }
+    mat-accordion {
+        mat-expansion-panel {
+            mat-expansion-panel-header {
+                border: 1px solid var(--p-yellow);
+                padding: 0 10px;
+                mat-panel-title {
+                    // border: 1px solid blue;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: small;
+                    min-width: 6.5rem;
+                    .day {
+                    }
+                }
+                mat-panel-description {
+                    text-transform: uppercase;
+                    // border: 3px solid green;
+                    font-size: small;
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+            .quill-content {
+                // border: 3px solid red;
+                // white-space: normal;
+                // overflow-wrap: normal;
+                // word-break: normal;
+            }
+            .artists {
+                // border: 3px solid blue;
+                .artist {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+            .admin {
+                border: 1px solid gray;
+                padding: 1rem;
+            }
+        }
+    }
+}

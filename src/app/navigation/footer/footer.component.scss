@@ -15,6 +15,9 @@
             background-color: var(--p-blue-light) !important;
             // border-radius: 7px;
             color: var(--p-purple);
+            mat-icon {
+                color: var(--p-black);
+            }
         }
     }
     .content {
@@ -40,11 +43,10 @@
         gap: 0.5rem;
         button {
             background-color: var(--p-blue-light) !important;
+            // border: 1px solid var(--p-black);
             mat-icon {
                 color: var(--p-purple);
             }
         }
-    }
-    .shortcut-button {
     }
 }

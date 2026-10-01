@@ -11,6 +11,11 @@ export const routes: Routes = [
             .then(c => c.QuickAccessCategoryComponent)
     },
     {
+        path: 'calendar',
+        loadComponent: () => import('./features/calendar/calendar.component')
+            .then(c => c.CalendarComponent)
+    },
+    {
         path: 'ajax',
         loadComponent: () => import('./features/ajax/ajax.component')
             .then(c => c.AjaxComponent)

@@ -103,7 +103,6 @@ export const FoodCategoryStore = signalStore(
                         .subscribe((foodCategories: FoodCategory[]) => {
 
                             patchState(store, { foodCategories });
-                            console.log(foodCategories);
                         })
 
                 } catch (err) {

@@ -14,6 +14,10 @@ import { environment } from '../environments/environment.prod';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideHttpClient } from '@angular/common/http';
 
+import { provideQuillConfig } from 'ngx-quill/config';
+import { provideNativeDateAdapter } from '@angular/material/core';
+
+
 export const appConfig: ApplicationConfig = {
     // providers: [
     //     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -44,9 +48,21 @@ export const appConfig: ApplicationConfig = {
             enabled: !isDevMode(),
             registrationStrategy: 'registerImmediately'
         }),
-        // {
-        //     provide: LOCALE_ID,
-        //     useValue: 'nl-NL'
-        // },
+        provideQuillConfig({
+            modules: {
+                toolbar: [
+                    ['bold', 'italic'],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                    ['link'],
+                    ['clean']
+                ]
+            }
+        }),
+        provideNativeDateAdapter()
     ]
+    // {
+    //     provide: LOCALE_ID,
+    //     useValue: 'nl-NL'
+    // },
+
 };

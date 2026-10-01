@@ -36,16 +36,16 @@ export const initialNavigationSlice: NavigationSlice = {
             en: 'van wees',
             link: 'dutch-gin'
         },
-        {
-            nl: 'ajax',
-            en: 'ajax',
-            link: 'ajax'
-        },
         // {
-        //     nl: 'menu',
-        //     en: 'menu',
-        //     link: 'menu'
+        //     nl: 'ajax',
+        //     en: 'ajax',
+        //     link: 'ajax'
         // },
+        {
+            nl: 'agenda',
+            en: 'calendar',
+            link: 'calendar'
+        },
         {
             nl: 'locatie',
             en: 'location',

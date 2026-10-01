@@ -3,6 +3,7 @@
 @use "./styles/variables";
 @use "./styles/mixins";
 @use "./styles/jazzfry";
+@use "quill/dist/quill.snow.css";
 
 html,
 body {
@@ -16,7 +17,7 @@ body {
 
 * {
     box-sizing: border-box;
-
+    letter-spacing: 1px;
     // font-family: "Alegreya", serif;
     // font-size: large;
 }
@@ -24,7 +25,8 @@ body {
 button {
     // border: 1px solid red !important;
     text-transform: uppercase !important;
-    background-color: white !important;
+    // background-color: var(--p-black) !important;
+    // color: var(--p-yellow-light) !important;
 }
 ul {
     list-style: none;

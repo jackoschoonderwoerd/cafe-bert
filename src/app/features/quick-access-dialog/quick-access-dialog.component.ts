@@ -9,7 +9,7 @@ import { LanguageSelectorComponent } from '../../shared/language-selector/langua
 
 @Component({
     selector: 'app-quick-access-dialog',
-    imports: [MatDialogTitle, MatDialogModule, MatButtonModule, MatIconModule, LanguageSelectorComponent],
+    imports: [MatDialogModule, MatButtonModule, MatIconModule, LanguageSelectorComponent],
     templateUrl: './quick-access-dialog.component.html',
     styleUrl: './quick-access-dialog.component.scss'
 })

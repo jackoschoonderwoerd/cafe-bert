@@ -1,0 +1,91 @@
+<div class="wrapper">
+    @if(authStore.isLoggedIn()){
+    <button class="add-button"
+        mat-raised-button
+        (click)="onAddCalendarItem()">add calendar item</button>
+    }
+    <mat-accordion>
+        @for(item of calendarStore.calendarItems();track item.id) {
+        @if(item.visible || authStore.isLoggedIn()) {
+        <mat-expansion-panel [disabled]="subjectContainsAjax(item.subjectNl)">
+            <mat-expansion-panel-header style="color:black">
+                <mat-panel-title>
+                    <div class="day">
+                        @if(appStore.activeLanguage() === 'en'){
+                        {{item.startsAt|date:'EEE, MMM d'}}
+                        } @else {
+                        {{item.startsAt|date:'EEE d MMM':'':'nl-NL'}}
+                        }
+                    </div>
+                    <div class="time">
+                        @if(appStore.activeLanguage() === 'en') {
+
+                        {{item.startsAt|date:'HH:mm'}}&nbsp;-&nbsp;
+                        {{item.endsAt|date:'HH:mm'}}
+                        } @else{
+                        {{item.startsAt|date:'HH:mm'}}&nbsp;-&nbsp;
+                        {{item.endsAt|date:'HH:mm'}}
+                        }
+
+                    </div>
+                </mat-panel-title>
+
+                <mat-panel-description [style]='getStyleBySubject(item.subjectNl)'> {{item.subjectNl}}
+                    @if(authStore.isLoggedIn()){
+
+                    @if(item.visible){
+
+                    <mat-icon>visibility</mat-icon>
+                    } @else {
+
+                    <mat-icon>visibility_off</mat-icon>
+                    }
+                    }
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="quill-content"
+                [innerHTML]="item.descriptionNl">
+            </div>
+            @if(subjectContainsJazzfry(item.subjectNl)){
+            <app-jazzfry-calendar [artistEntries]="item.artistEntries"></app-jazzfry-calendar>
+            }
+            <!-- @if(item.artistEntries){
+            <div class="artists">
+                @for(artist of item.artistEntries;track $index) {
+                <div class="artist">
+                    <div class="name">{{artist.name}}</div>
+                    <div class="instruments">
+                        @for(instrument of artist.instruments; track $index) {
+                        {{instrument}}
+                        }
+                    </div>
+                </div>
+                }
+            </div>
+            } -->
+            @if(authStore.isLoggedIn()){
+            <div class="admin">
+                <div class="admin-only">admin only</div>
+                @if(item.mutable){
+                <div class="buttons">
+                    <button (click)="onEdit(item)"
+                        mat-icon-button>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="onDelete(item)"
+                        mat-icon-button>
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+                } @else {
+                <div class="immutable">immutable calendar item </div>
+                }
+            </div>
+            }
+
+        </mat-expansion-panel>
+        }
+        }
+    </mat-accordion>
+</div>

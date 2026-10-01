@@ -15,28 +15,39 @@
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyDO0YFGtduLJJmfZ-tUZEDA06w0DFG3l8U",
+    apiKey: "AIzaSyDO0YFGtduLJJmfZ-tUZEDA06w0DFG3l8U",
 
-  authDomain: "cafe-bert.firebaseapp.com",
+    authDomain: "cafe-bert.firebaseapp.com",
 
-  projectId: "cafe-bert",
+    projectId: "cafe-bert",
 
-  storageBucket: "cafe-bert.firebasestorage.app",
+    storageBucket: "cafe-bert.firebasestorage.app",
 
-  messagingSenderId: "683238188346",
+    messagingSenderId: "683238188346",
 
-  appId: "1:683238188346:web:cc47ae20d9d58a6117dc03",
+    appId: "1:683238188346:web:cc47ae20d9d58a6117dc03",
 
-  measurementId: "G-0YV4YB40E1"
+    measurementId: "G-0YV4YB40E1"
 
 };
+
+const concertsFirebaseConfig = {
+    apiKey: "AIzaSyBXlFkCerIujEbiC59GofOLkAaJDEXnMZc",
+    authDomain: "jazzfry-c0727.firebaseapp.com",
+    projectId: "jazzfry-c0727",
+    storageBucket: "jazzfry-c0727.firebasestorage.app",
+    messagingSenderId: "432328499818",
+    appId: "1:432328499818:web:eb246fd5bb34c30aabe013",
+    measurementId: "G-2BYKS0L6B9"
+}
 
 
 
 
 export const environment = {
-  production: false,
-  firebase: firebaseConfig
+    production: false,
+    firebase: firebaseConfig,
+    concertsFirebase: concertsFirebaseConfig
 };
 
 /*

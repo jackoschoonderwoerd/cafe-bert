@@ -1,0 +1,76 @@
+<div class="wrapper">
+    <div mat-dialog-title>{{editmode ? 'update ': 'add '}}calender item</div>
+    <mat-dialog-content>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Subject Nl</mat-label>
+            <input matInput
+                type="text"
+                required
+                [(ngModel)]="subjectNl"
+                name="subjectNl">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Subject En</mat-label>
+            <input matInput
+                type="text"
+                [(ngModel)]="subjectEn"
+                name="subjectNl">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+
+            <input matInput
+                required="true"
+                [matDatepicker]="picker"
+                [(ngModel)]="eventDate"
+                name="eventDate">
+
+            <mat-datepicker-toggle matIconSuffix
+                [for]="picker">
+            </mat-datepicker-toggle>
+
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <div class="starts_ends">
+            <mat-form-field class="starts"
+                appearance="outline">
+                <mat-label>Starts</mat-label>
+                <input matInput
+                    type="time"
+                    [(ngModel)]="startTime"
+                    name="startTime">
+            </mat-form-field>
+
+            <mat-form-field class="ends"
+                appearance="outline">
+                <mat-label>Ends</mat-label>
+                <input matInput
+                    type="time"
+                    [(ngModel)]="endTime"
+                    name="endTime">
+            </mat-form-field>
+        </div>
+        <div class="quill-text-editors">
+            <app-quill-text-editor [language]="'dutch'"
+                [content]="descriptionNl"
+                (contentChange)="descriptionNl = $event"></app-quill-text-editor>
+
+            <div class="quill-text-editor-container-en">
+                <app-quill-text-editor [language]="'english'"
+                    [content]="descriptionEn"
+                    (contentChange)="descriptionEn = $event"></app-quill-text-editor>
+            </div>
+        </div>
+        <mat-checkbox [(ngModel)]="visible">visible</mat-checkbox>
+        <!-- <div class="preview"
+        [innerHTML]="description"></div> -->
+        <div class="buttons">
+            <button mat-raised-button
+                (click)="onCancel()">cancel</button>
+            <button mat-raised-button
+                type="button"
+                (click)="submitCalendarItem()">{{editmode ? 'update ': 'add '}}calendar item</button>
+        </div>
+    </mat-dialog-content>
+</div>

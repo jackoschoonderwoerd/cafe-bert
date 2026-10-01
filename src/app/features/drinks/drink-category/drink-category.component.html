@@ -34,7 +34,9 @@
         @if(drinkCateegoryStore.getEnDrinkCategoryNameById(c.id) === 'draft beers'){
         <app-draft-beer-header></app-draft-beer-header>
         }
-        @if(drinkCateegoryStore.getEnDrinkCategoryNameById(c.id)=== 'white wine') {
+        @if(drinkCateegoryStore.getEnDrinkCategoryNameById(c.id)=== 'white wine' ||
+        drinkCateegoryStore.getEnDrinkCategoryNameById(c.id)=== 'red wine'||
+        drinkCateegoryStore.getEnDrinkCategoryNameById(c.id)=== 'rose') {
         <app-wine-bottle-header></app-wine-bottle-header>
         }
         @for(consumption of c.consumptions; track $index) {

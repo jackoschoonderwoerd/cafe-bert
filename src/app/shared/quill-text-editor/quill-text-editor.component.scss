@@ -1,0 +1,13 @@
+.wrapper {
+    padding: 0.5rem;
+    border: 1px solid gray;
+    .quill-text-editors {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    quill-editor {
+        width: 100%;
+        height: 10rem;
+    }
+}

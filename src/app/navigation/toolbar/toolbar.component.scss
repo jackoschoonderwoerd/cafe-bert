@@ -10,19 +10,19 @@ mat-toolbar {
         gap: 1rem;
         align-items: center;
         .menu {
-            @media (650px < width) {
+            @media (999px < width) {
                 display: none;
             }
         }
         .home {
             background-color: var(--p-yellow) !important;
-            @media (650px > width) {
+            @media (899px > width) {
                 display: none;
             }
         }
         .menu-buttons {
             background-color: var(--p-yellow) !important;
-            @media (650px > width) {
+            @media (900px > width) {
                 display: none;
             }
         }

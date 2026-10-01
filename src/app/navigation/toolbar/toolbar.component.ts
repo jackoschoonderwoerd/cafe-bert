@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavigationStore } from '../navigation-store/navigation.store';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { MatIconModule } from '@angular/material/icon';
-import { NavigationService } from '../XXXnavigation.service';
+
 import { MenuItem } from '../../models/menu-item.model';
 import { AuthStore } from '../../auth/auth.store';
 
@@ -24,18 +24,14 @@ import { AuthStore } from '../../auth/auth.store';
     templateUrl: './toolbar.component.html',
     styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
     appStore = inject(AppStore);
     authStore = inject(AuthStore)
     navigationStore = inject(NavigationStore);
-    // navigationService = inject(NavigationService);
-    menuItems: MenuItem[] = []
+
 
     @Output() sidenavToggle = new EventEmitter<void>
 
-    ngOnInit(): void {
-        // this.menuItems = this.navigationService.getMenuItems()
-    }
 
     onMenu() {
         this.sidenavToggle.emit()

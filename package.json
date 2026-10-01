@@ -24,6 +24,8 @@
         "@angular/router": "^19.2.19",
         "@angular/service-worker": "^19.2.25",
         "@ngrx/signals": "^19.2.1",
+        "ngx-quill": "^27.1.2",
+        "quill": "^2.0.3",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.15.0"

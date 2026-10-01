@@ -21,6 +21,28 @@
             </div>
             }
 
+            @case ('red wine') {
+            <div class="wine-prices">
+                <div class="price-vessel">
+                    {{ drink()?.price | currency: 'EUR' }}
+                </div>
+                <div class="price-vessel">
+                    {{ drink()?.priceBottle | currency: 'EUR' }}
+                </div>
+            </div>
+            }
+
+            @case ('rose') {
+            <div class="wine-prices">
+                <div class="price-vessel">
+                    {{ drink()?.price | currency: 'EUR' }}
+                </div>
+                <div class="price-vessel">
+                    {{ drink()?.priceBottle | currency: 'EUR' }}
+                </div>
+            </div>
+            }
+
             @case ('draft beers') {
             <div class="draft-beer-prices">
                 <div class="price-draft">
@@ -36,6 +58,18 @@
             }
 
             @case ('arend jan de wijnman') {
+            <div class="price-bottle">
+                {{ drink()?.priceBottle | currency:'EUR' }}
+            </div>
+            }
+
+            @case ('arend jan de wijnman') {
+            <div class="price-bottle">
+                {{ drink()?.priceBottle | currency:'EUR' }}
+            </div>
+            }
+
+            @case ('sparkling') {
             <div class="price-bottle">
                 {{ drink()?.priceBottle | currency:'EUR' }}
             </div>

@@ -1,6 +1,14 @@
-mat-dialog-content {
-    form {
+// mat-dialog-content {
+//     form {
+//         display: flex;
+//         flex-direction: column;
+//     }
+// }
+.wrapper {
+    border: 3px solid red;
+    .quill-text-editors {
         display: flex;
         flex-direction: column;
+        gap: 1rem;
     }
 }

@@ -12,6 +12,8 @@
         min-width: 180px;
 
         .size {
+            // font-weight: bold;
+            color: var(--p-yellow-light);
             text-transform: capitalize;
             justify-self: end;
         }

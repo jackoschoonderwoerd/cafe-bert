@@ -17,7 +17,6 @@ import { DrinksStore } from '../drinks-store/drinks-store';
 @Component({
     selector: 'app-drink-category',
     imports: [
-        JsonPipe,
         MatButtonModule,
         MatIconModule,
         DrinkComponent,

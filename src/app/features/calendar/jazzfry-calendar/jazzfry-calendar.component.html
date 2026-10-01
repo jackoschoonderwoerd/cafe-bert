@@ -1,0 +1,21 @@
+<mat-tab-group>
+    @for(artist of artistEntries(); track $index) {
+    <mat-tab [label]="artist.instruments[0]">
+        <!-- <div class="instruments">
+            @for(instrument of artist.instruments; track $index){
+            <div class="instrument">{{instrument}}</div>
+            }
+        </div> -->
+        <div class="name">{{artist.name}}</div>
+        @if(artist.imageUrl) {
+        <div class="image-container">
+
+            <img [src]="artist.imageUrl"
+                alt="">
+        </div>
+        }
+        <div class="bios"
+            [innerHTML]="artist.bios.nl"></div>
+    </mat-tab>
+    }
+</mat-tab-group>

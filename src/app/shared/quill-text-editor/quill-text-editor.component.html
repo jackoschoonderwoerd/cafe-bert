@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <div class="language">{{language}}</div>
+    <quill-editor name="description"
+        [(ngModel)]="content"
+        format="html"
+        (onContentChanged)="onEditorChanged($event)"
+        placeholder="Enter text...">
+    </quill-editor>
+</div>
