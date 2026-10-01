@@ -1,6 +1,6 @@
 <mat-dialog-content>
     {{data.categoryId}}
-    <p class="adding-to">adding to: {{drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId)}}</p>
+    <p class="adding-to">adding to: {{drinksStore.getEnDrinkCategoryNameById(data.categoryId)}}</p>
     <form [formGroup]="form"
         class="grid-form">
         <div class="">
@@ -46,8 +46,8 @@
                     formControlName="price">
             </mat-form-field>
         </div>
-        @if(drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId) === 'arend jan de wijnman' ||
-        drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId) === 'white wine'){
+        @if(drinksStore.getEnDrinkCategoryNameById(data.categoryId) === 'arend jan de wijnman' ||
+        drinksStore.getEnDrinkCategoryNameById(data.categoryId) === 'white wine'){
         <div class="">
 
             <mat-form-field>
@@ -58,7 +58,7 @@
             </mat-form-field>
         </div>
         }
-        @if(drinkCategoryStore.getEnDrinkCategoryNameById(data.categoryId) === 'draft beers'){
+        @if(drinksStore.getEnDrinkCategoryNameById(data.categoryId) === 'draft beers'){
 
         <div class="">
 

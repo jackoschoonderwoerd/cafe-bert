@@ -1,0 +1,23 @@
+.wrapper {
+    background-color: var(--p-yellow);
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 30rem;
+    margin: auto;
+    .header {
+        padding: 1rem;
+        display: flex;
+        gap: 1rem;
+        img {
+            width: 3rem;
+        }
+    }
+    .anouncement {
+        text-transform: uppercase;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+}

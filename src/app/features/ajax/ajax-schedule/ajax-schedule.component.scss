@@ -1,0 +1,21 @@
+.events {
+    display: flex;
+    flex-direction: column;
+
+    .event {
+        // padding-top: 0.5rem;
+        // padding-bottom: 0.5rem;
+        padding: 0.5rem;
+        background-color: white;
+        // .date_hours {
+        //     display: flex;
+        //     gap: 1rem;
+        //     .date {
+        //     }
+        // }
+    }
+    .event:nth-child(even) {
+        background-color: #d2122e;
+        color: white;
+    }
+}

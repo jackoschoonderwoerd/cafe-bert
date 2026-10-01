@@ -22,24 +22,34 @@ export const initialNavigationSlice: NavigationSlice = {
             link: 'welcome'
         },
         {
+            nl: 'eten',
+            en: 'food',
+            link: 'foods'
+        },
+        {
             nl: 'dranken',
             en: 'drinks',
             link: 'drinks'
         },
         {
-            nl: 'menu',
-            en: 'menu',
-            link: 'menu'
+            nl: 'van wees',
+            en: 'van wees',
+            link: 'dutch-gin'
         },
+        {
+            nl: 'ajax',
+            en: 'ajax',
+            link: 'ajax'
+        },
+        // {
+        //     nl: 'menu',
+        //     en: 'menu',
+        //     link: 'menu'
+        // },
         {
             nl: 'locatie',
             en: 'location',
             link: 'location'
-        },
-        {
-            nl: 'jenever',
-            en: 'dutch gin',
-            link: 'dutch-gin'
         },
 
     ],

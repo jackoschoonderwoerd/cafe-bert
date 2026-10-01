@@ -1,0 +1,15 @@
+.wrapper {
+    // padding: 1rem;
+
+    .food-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 0.3rem;
+
+        // align-items: start;
+        grid-auto-flow: dense;
+        @media (min-width: 600px) {
+            gap: 5px 5px;
+        }
+    }
+}

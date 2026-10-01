@@ -4,6 +4,19 @@
     background-color: var(--p-yellow);
     border-top: 2px solid var(--p-black);
     position: relative;
+    height: 3rem;
+    align-items: center;
+    .auth {
+        position: absolute;
+        left: 0.5rem;
+        // bottom: 5px;
+        button {
+            // cursor: pointer;
+            background-color: var(--p-blue-light) !important;
+            // border-radius: 7px;
+            color: var(--p-purple);
+        }
+    }
     .content {
         padding: 0.3rem;
         display: flex;
@@ -16,18 +29,22 @@
         }
         .parisius {
             font-family: "Alegreya", serif;
-            font-weight: 400;
+            font-weight: 600;
             font-size: 1.2rem;
         }
     }
-    .auth {
+    .quick-access-buttons {
         position: absolute;
         right: 0.5rem;
-        bottom: 5px;
+        display: flex;
+        gap: 0.5rem;
         button {
-            cursor: pointer;
             background-color: var(--p-blue-light) !important;
-            border-radius: 7px;
+            mat-icon {
+                color: var(--p-purple);
+            }
         }
+    }
+    .shortcut-button {
     }
 }

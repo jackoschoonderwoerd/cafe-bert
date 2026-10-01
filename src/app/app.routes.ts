@@ -6,6 +6,16 @@ export const routes: Routes = [
         path: '', redirectTo: 'home', pathMatch: 'full'
     },
     {
+        path: 'quick-access-category/:categoryId',
+        loadComponent: () => import('./features/quick-access-category/quick-access-category.component')
+            .then(c => c.QuickAccessCategoryComponent)
+    },
+    {
+        path: 'ajax',
+        loadComponent: () => import('./features/ajax/ajax.component')
+            .then(c => c.AjaxComponent)
+    },
+    {
         path: 'welcome',
         loadComponent: () => import('./features/welcome/welcome.component')
             .then(c => c.WelcomeComponent)
@@ -21,9 +31,9 @@ export const routes: Routes = [
             .then(c => c.DrinksComponent)
     },
     {
-        path: 'menu',
-        loadComponent: () => import('./features/menu/menu.component')
-            .then(c => c.MenuComponent)
+        path: 'foods',
+        loadComponent: () => import('./features/food/foods.component')
+            .then(c => c.FoodsComponent)
     },
     {
         path: 'location',

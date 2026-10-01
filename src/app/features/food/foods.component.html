@@ -1,0 +1,14 @@
+<div class="wrapper">
+    @if(authStore.isLoggedIn()){
+    <button mat-button
+        (click)="onAddFoodCategory()">add food category</button>
+    }
+    <!-- {{foodCategoryStore.foodCategories().length}} -->
+    <div class="food-categories">
+        @for(category of foodCategoryStore.foodCategories();track $index) {
+        <app-food-category [category]="category"></app-food-category>
+        }
+
+    </div>
+
+</div>

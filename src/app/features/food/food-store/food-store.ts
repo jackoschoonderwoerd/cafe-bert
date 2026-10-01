@@ -4,21 +4,24 @@ import { computed, effect, inject, Signal } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { FirebaseError } from '@angular/fire/app';
-import { initialDrinkCategorySlice } from './drink-category-slice';
-import { FirestoreService } from '../../../../services/firestore.service';
-import { ConfirmService } from '../../../../services/confirm.service';
-import { SnackbarService } from '../../../../services/snackbar.service';
-import { DrinkCategory } from '../../../../models/drink-category.model';
-import { Consumption } from '../../../../models/consumption.model';
+
+import { FirestoreService } from '../../../services/firestore.service';
+import { ConfirmService } from '../../../services/confirm.service';
+import { SnackbarService } from '../../../services/snackbar.service';
+
+import { Consumption } from '../../../models/consumption.model';
 import { firstValueFrom } from 'rxjs';
-import { moveDown, moveUp } from '../../../../helper-functions/arrays';
+import { moveDown, moveUp } from '../../../helper-functions/arrays';
+import { initialFoodCategorySlice } from './food-slice';
+import { FoodCategory } from '../../../models/drink-category.model copy';
 
 
 
 
-export const DrinkCategoryStore = signalStore(
+
+export const FoodCategoryStore = signalStore(
     { providedIn: 'root' },
-    withState(initialDrinkCategorySlice),
+    withState(initialFoodCategorySlice),
     withComputed(store => ({
         // productListVm: computed(() => buildProductListVm(
         //     store.products(),
@@ -41,49 +44,49 @@ export const DrinkCategoryStore = signalStore(
         const router = inject(Router)
 
         return {
-            addDrinkCategory(drinkCategory: DrinkCategory) {
-                const newDrinkCategories: DrinkCategory[] = store.drinkCategories()
-                newDrinkCategories.push(drinkCategory)
-                patchState(store, { drinkCategories: newDrinkCategories })
+            addFoodCategory(foodCategory: FoodCategory) {
+                const newFoodCategories: FoodCategory[] = store.foodCategories()
+                newFoodCategories.push(foodCategory)
+                patchState(store, { foodCategories: newFoodCategories })
 
-                const path = `cafe-bert/drinks/categories`
+                const path = `cafe-bert/food/categories`
 
-                return fs.addDoc(path, drinkCategory)
+                return fs.addDoc(path, foodCategory)
                     .then((res: any) => {
-                        sb.openSnackbar(`drink category added`)
+                        sb.openSnackbar(`food category added`)
                     })
                     .catch((err: FirebaseError) => {
                         console.log(err);
                         sb.openSnackbar(`operation failed due to: ${err.message}`)
                     })
             },
-            async deleteDrinkCategory(categoryId: string) {
-                const status = await firstValueFrom(cs.getConfirmation('this will permanently delete the category and all the drinks it contains'))
+            async deleteFoodCategory(categoryId: string) {
+                const status = await firstValueFrom(cs.getConfirmation('this will permanently delete the category and all the food it contains'))
 
                 if (!status) {
                     sb.openSnackbar('operation aborted by user');
                 } else {
 
-                    const oldCategories = store.drinkCategories();
+                    const oldCategories = store.foodCategories();
                     console.log(oldCategories)
                     const categoryIndex = oldCategories.findIndex(c => c.id === categoryId);
 
                     if (categoryIndex === -1) {
-                        sb.openSnackbar('no drink category found');
+                        sb.openSnackbar('no food category found');
                         return;
                     }
-                    const newDrinkCategories = oldCategories.filter(c => c.id !== categoryId)
-                    // const newDrinkCategories = oldCategories.splice(categoryIndex, 1)
+                    const newFoodCategories = oldCategories.filter(c => c.id !== categoryId)
+                    // const newFoodCategories = oldCategories.splice(categoryIndex, 1)
 
 
-                    // console.log(newDrinkCategories)
-                    patchState(store, { drinkCategories: newDrinkCategories })
+                    // console.log(newFoodCategories)
+                    patchState(store, { foodCategories: newFoodCategories })
 
-                    const path = `cafe-bert/drinks/categories/${categoryId}`
+                    const path = `cafe-bert/food/categories/${categoryId}`
 
                     try {
                         await fs.deleteDoc(path);
-                        sb.openSnackbar('category removed')
+                        sb.openSnackbar('food category removed')
                     } catch (err) {
                         console.log(err)
                         sb.openSnackbar(`operation failed due to: ${(err as FirebaseError).message}`)
@@ -91,57 +94,58 @@ export const DrinkCategoryStore = signalStore(
                 }
             },
 
-            async getSortedDrinkCategories(): Promise<void> {
-                const path = `cafe-bert/drinks/categories`;
+            async getSortedFoodCategories(): Promise<void> {
+                const path = `cafe-bert/food/categories`;
 
                 try {
 
                     fs.sortedCollection(path, 'orderOfAppearance', 'asc')
-                        .subscribe((drinkCategories: DrinkCategory[]) => {
+                        .subscribe((foodCategories: FoodCategory[]) => {
 
-                            patchState(store, { drinkCategories });
+                            patchState(store, { foodCategories });
+                            console.log(foodCategories);
                         })
 
                 } catch (err) {
                     console.error(err);
-                    sb.openSnackbar('Failed to load drink categories');
+                    sb.openSnackbar('Failed to load food categories');
                 }
 
                 // try {
-                //     const drinkCategories = await firstValueFrom(
+                //     const foodCategories = await firstValueFrom(
                 //          fs.sortedCollection(path, 'orderOfAppearance', 'desc')
                 //     );
-                //     patchState(store, { drinkCategories });
+                //     patchState(store, { foodCategories });
                 // } catch (err) {
                 //     console.error(err);
-                //     sb.openSnackbar('Failed to load drink categories');
+                //     sb.openSnackbar('Failed to load food categories');
                 // }
             },
 
-            async getDrinkCategories(): Promise<void> {
-                const path = `cafe-bert/drinks/categories`;
+            async getFoodCategories(): Promise<void> {
+                const path = `cafe-bert/food/categories`;
 
                 try {
-                    const drinkCategories = await firstValueFrom(
+                    const foodCategories = await firstValueFrom(
                         fs.collection(path)
                     );
 
-                    patchState(store, { drinkCategories });
+                    patchState(store, { foodCategories });
                 } catch (err) {
                     console.error(err);
-                    sb.openSnackbar('Failed to load drink categories');
+                    sb.openSnackbar('Failed to load food categories');
                 }
             },
-            getEnDrinkCategoryNameById(id: string): string {
-                // const categories: DrinkCategory[] = store.drinkCategories()
+            getEnFoodCategoryNameById(id: string): string {
+                // const categories: FoodCategory[] = store.foodCategories()
                 // categories.forEach(c => console.log(c.nameEn))
-                const nameEn = store.drinkCategories().filter(c => c.id === id)[0].nameEn;
+                const nameEn = store.foodCategories().filter(c => c.id === id)[0].nameEn;
                 // console.log(nameEn)
                 // console.log(nameEn)
                 return nameEn
             },
 
-            async updateDrinkCategoryProperties(
+            async updateFoodCategoryProperties(
                 categoryId: string,
                 orderOfAppearance: number,
                 nameNl: string,
@@ -151,14 +155,14 @@ export const DrinkCategoryStore = signalStore(
             ) {
                 // Immutable update for signals
                 patchState(store, {
-                    drinkCategories: store.drinkCategories().map(c =>
+                    foodCategories: store.foodCategories().map(c =>
                         c.id === categoryId
                             ? { ...c, orderOfAppearance, nameNl, nameEn, descriptionNl, descriptionEn }
                             : c
                     )
                 });
 
-                const path = `cafe-bert/drinks/categories/${categoryId}`;
+                const path = `cafe-bert/food/categories/${categoryId}`;
 
                 try {
                     await fs.updateFields(path, {
@@ -169,7 +173,7 @@ export const DrinkCategoryStore = signalStore(
                         orderOfAppearance
                     });
 
-                    sb.openSnackbar('Category updated');
+                    sb.openSnackbar('Food category updated');
                 } catch (err) {
                     console.error(err);
                     sb.openSnackbar(`Update failed: ${(err as FirebaseError).message}`);
@@ -179,12 +183,12 @@ export const DrinkCategoryStore = signalStore(
 
 
 
-            async addDrinkToCategory(categoryId: string, drink: Consumption): Promise<void> {
-                const categories = store.drinkCategories();
+            async addFoodToCategory(categoryId: string, food: Consumption): Promise<void> {
+                const categories = store.foodCategories();
                 const categoryIndex = categories.findIndex(c => c.id === categoryId);
 
                 if (categoryIndex === -1) {
-                    sb.openSnackbar('no drink category found');
+                    sb.openSnackbar('no food category found');
                     return Promise.resolve()
                 }
 
@@ -192,64 +196,64 @@ export const DrinkCategoryStore = signalStore(
                 const updatedCategories = structuredClone(categories);
                 const category = updatedCategories[categoryIndex];
 
-                // Add drink
-                category.consumptions.push(drink);
+                // Add food
+                category.consumptions.push(food);
 
                 // Update local store
-                patchState(store, { drinkCategories: updatedCategories });
+                patchState(store, { foodCategories: updatedCategories });
 
                 // Firestore update
-                const path = `cafe-bert/drinks/categories/${categoryId}`;
+                const path = `cafe-bert/food/categories/${categoryId}`;
 
                 try {
-                    await fs.addElementToArray(path, 'consumptions', drink);
-                    sb.openSnackbar('drink added')
+                    await fs.addElementToArray(path, 'consumptions', food);
+                    sb.openSnackbar('food added')
                 } catch (err) {
                     console.error(err);
                     sb.openSnackbar(`operation failed due to: ${(err as FirebaseError).message}`);
                 }
 
             },
-            async hideDrink(categoryId: string, consumptionIndex: number, hide: boolean) {
+            async hideFood(categoryId: string, consumptionIndex: number, hide: boolean) {
                 console.log(categoryId, consumptionIndex, hide);
-                const categories = store.drinkCategories();
+                const categories = store.foodCategories();
                 const categoryIndex = categories.findIndex(c => c.id === categoryId);
                 const updatedCategories = structuredClone(categories);
                 const category = updatedCategories[categoryIndex]
                 if (categoryIndex === -1) {
-                    sb.openSnackbar('no drink category found');
+                    sb.openSnackbar('no food category found');
                     return; // <-- now clearly a Promise<void> because of async
                 }
                 if (hide) {
                     category.consumptions[consumptionIndex].hidden = true
                     console.log(category.consumptions[consumptionIndex].hidden)
-                    // patchState(store, { drinkCategories: updatedCategories });
+                    // patchState(store, { foodCategories: updatedCategories });
                 } else if (!hide) {
                     // const updatedCategories = structuredClone(categories);
                     // const category = updatedCategories[categoryIndex]
                     category.consumptions[consumptionIndex].hidden = false
                     // console.log(category.consumptions[consumptionIndex].hidden)
                 }
-                patchState(store, { drinkCategories: updatedCategories });
+                patchState(store, { foodCategories: updatedCategories });
 
-                const path = `cafe-bert/drinks/categories/${categoryId}`;
+                const path = `cafe-bert/food/categories/${categoryId}`;
 
                 try {
                     await fs.updateField(path, 'consumptions', category.consumptions);
-                    sb.openSnackbar('visibility drink updated');
+                    sb.openSnackbar('visibility food updated');
                 } catch (err) {
                     console.error(err);
                     sb.openSnackbar(`operation failed due to: ${(err as FirebaseError).message}`);
                 }
             },
 
-            async removeDrinkFromCategory(categoryId: string, drinkIndex: number): Promise<void> {
-                const categories = store.drinkCategories();
+            async removeFoodFromCategory(categoryId: string, foodIndex: number): Promise<void> {
+                const categories = store.foodCategories();
                 const categoryIndex = categories.findIndex(c => c.id === categoryId);
 
                 // Category not found
                 if (categoryIndex === -1) {
-                    sb.openSnackbar('no drink category found');
+                    sb.openSnackbar('no food category found');
                     return; // <-- now clearly a Promise<void> because of async
                 }
 
@@ -257,18 +261,18 @@ export const DrinkCategoryStore = signalStore(
                 const updatedCategories = structuredClone(categories);
                 const category = updatedCategories[categoryIndex];
 
-                // Remove drink
-                category.consumptions.splice(drinkIndex, 1);
+                // Remove food
+                category.consumptions.splice(foodIndex, 1);
 
                 // Update local store
-                patchState(store, { drinkCategories: updatedCategories });
+                patchState(store, { foodCategories: updatedCategories });
 
                 // Firestore update
-                const path = `cafe-bert/drinks/categories/${categoryId}`;
+                const path = `cafe-bert/food/categories/${categoryId}`;
 
                 try {
                     await fs.updateField(path, 'consumptions', category.consumptions);
-                    sb.openSnackbar('drink removed');
+                    sb.openSnackbar('food removed');
                 } catch (err) {
                     console.error(err);
                     sb.openSnackbar(`operation failed due to: ${(err as FirebaseError).message}`);
@@ -276,12 +280,12 @@ export const DrinkCategoryStore = signalStore(
             },
 
 
-            async updateDrink(categoryId: string, drinkIndex: number, drink: Consumption): Promise<void> {
-                const categories = store.drinkCategories();
+            async updateFood(categoryId: string, foodIndex: number, food: Consumption): Promise<void> {
+                const categories = store.foodCategories();
                 const categoryIndex = categories.findIndex(c => c.id === categoryId);
 
                 if (categoryIndex === -1) {
-                    sb.openSnackbar('no drink category found');
+                    sb.openSnackbar('no food category found');
                     return Promise.resolve();
                 }
 
@@ -290,36 +294,36 @@ export const DrinkCategoryStore = signalStore(
                 const updatedCategory = updatedCategories[categoryIndex];
 
                 // Update item
-                updatedCategory.consumptions[drinkIndex] = drink;
+                updatedCategory.consumptions[foodIndex] = food;
 
                 // Update signal store (local state)
-                patchState(store, { drinkCategories: updatedCategories });
+                patchState(store, { foodCategories: updatedCategories });
 
                 // Update Firestore (remote state)
-                const path = `cafe-bert/drinks/categories/${categoryId}`;
+                const path = `cafe-bert/food/categories/${categoryId}`;
 
                 try {
                     await fs.updateField(path, 'consumptions', updatedCategory.consumptions)
-                    sb.openSnackbar('drink updated')
+                    sb.openSnackbar('food updated')
                 } catch (err) {
                     console.error(err)
                     sb.openSnackbar(`operation failed due to: ${(err as FirebaseError).message}`)
                 }
             },
             async moveUp(categoryId: string, consumption: Consumption) {
-                const oldConsumptions: Consumption[] = store.drinkCategories().filter((c => c.id === categoryId))[0].consumptions;
+                const oldConsumptions: Consumption[] = store.foodCategories().filter((c => c.id === categoryId))[0].consumptions;
                 const index = oldConsumptions.findIndex(c => c === consumption)
 
                 if (index <= 0) return;
                 const newConsumptions: Consumption[] = moveUp(oldConsumptions, index);
                 patchState(store, {
-                    drinkCategories: store.drinkCategories().map(c =>
+                    foodCategories: store.foodCategories().map(c =>
                         c.id === categoryId
                             ? { ...c, consumptions: newConsumptions }
                             : c
                     )
                 });
-                const path = `cafe-bert/drinks/categories/${categoryId}`
+                const path = `cafe-bert/food/categories/${categoryId}`
                 try {
                     await fs.updateField(path, 'consumptions', newConsumptions);
                     sb.openSnackbar(`consumptions array updated`)
@@ -330,18 +334,18 @@ export const DrinkCategoryStore = signalStore(
             },
 
             async moveDown(categoryId: string, consumption: Consumption) {
-                const oldConsumptions: Consumption[] = store.drinkCategories().filter((c => c.id === categoryId))[0].consumptions;
+                const oldConsumptions: Consumption[] = store.foodCategories().filter((c => c.id === categoryId))[0].consumptions;
                 const index = oldConsumptions.findIndex(c => c === consumption);
                 if (index < 0 || index >= oldConsumptions.length - 1) return;
                 const newConsumptions: Consumption[] = moveDown(oldConsumptions, index)
                 patchState(store, {
-                    drinkCategories: store.drinkCategories().map(c =>
+                    foodCategories: store.foodCategories().map(c =>
                         c.id === categoryId
                             ? { ...c, consumptions: newConsumptions }
                             : c
                     )
                 });
-                const path = `cafe-bert/drinks/categories/${categoryId}`
+                const path = `cafe-bert/food/categories/${categoryId}`
                 try {
                     await fs.updateField(path, 'consumptions', newConsumptions);
                     sb.openSnackbar('consumptions array updated')

@@ -1,0 +1,65 @@
+@let c = category();
+<div class="wrapper"
+    [style]="getStyle(c.orderOfAppearance)">
+
+    <div class="header">
+        <div class="header-top">
+            <div class="header-top-left">
+                @if(authStore.isLoggedIn()) {
+                <div class="order-of-appearance">{{c.orderOfAppearance}}</div>
+                }
+                <div class="name">{{appStore.activeLanguage()  === 'nl' ? c?.nameNl: c?.nameEn}}</div>
+            </div>
+            @if(authStore.isLoggedIn()){
+            <div class="icon-buttons">
+                <button mat-icon-button
+                    (click)="foodCategoryStore.deleteFoodCategory(c.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button
+                    (click)="editFoodCategory()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+            }
+        </div>
+        @if(c.descriptionNl || c.descriptionEn) {
+        <div class="description">{{appStore.activeLanguage() === 'nl' ? c?.descriptionNl : c.descriptionEn}}</div>
+        }
+    </div>
+
+    <div class="food">
+        <!-- @if(foodCategoryStore.getEnFoodCategoryNameById(c.id) === 'draft beers'){
+        <app-draft-beer-header></app-draft-beer-header>
+        }
+        @if(foodCategoryStore.getEnFoodCategoryNameById(c.id)=== 'white wine') {
+        <app-wine-bottle-header></app-wine-bottle-header>
+        } -->
+        @for(consumption of c.consumptions; track $index) {
+        <!-- admin -->
+        @if(authStore.isLoggedIn()){
+
+        <app-food-item [categoryId]="c.id"
+            [first]="$first"
+            [last]="$last"
+            [index]="$index"
+            [foodItem]="consumption"></app-food-item>
+        }
+        @if(!authStore.isLoggedIn() && !consumption.hidden){
+        <app-food-item [categoryId]="c.id"
+            [first]="$first"
+            [last]="$last"
+            [index]="$index"
+            [foodItem]="consumption"></app-food-item>
+        }
+        }
+        <!-- visitor -->
+
+
+        @if(authStore.isLoggedIn()){
+        <div class="buttons">
+            <button mat-raised-button
+                (click)="onAddFood()">add item to {{appStore.activeLanguage()  === 'nl' ? c?.nameNl: c?.nameEn}}</button>
+        </div>
+        }
+    </div>

@@ -1,0 +1,51 @@
+.name_price_buttons {
+    padding: 0.2rem;
+    border: 2px solid #e3a634;
+    // color: #6b4820;
+    background-color: #e3a634;
+    margin-top: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    gap: 0.5rem;
+    .name_price {
+        letter-spacing: 0.5px;
+        flex-grow: 1;
+        width: 100%;
+        gap: 1rem;
+        display: flex;
+        justify-content: space-between;
+        .left {
+            .name {
+                text-transform: capitalize;
+                font-weight: 600;
+            }
+            .description {
+                // font-style: italic;
+                font-weight: 400;
+            }
+        }
+        .price {
+            font-weight: 600;
+        }
+    }
+    .icon-buttons {
+        // outline: 2px solid white;
+        display: flex;
+        gap: 1rem;
+        justify-content: end;
+        .small-icon-button {
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+
+            mat-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 20px;
+                line-height: 20px;
+                margin-bottom: 3px;
+            }
+        }
+    }
+}

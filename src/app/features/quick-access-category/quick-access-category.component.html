@@ -1,0 +1,16 @@
+<div class="wrapper">
+    @for (category of categories(); track $index) {
+
+    <app-drink-category [category]="category"></app-drink-category>
+    }
+
+    <!-- <div class="buttons">
+
+        <button mat-raised-button
+            (click)="onQuickAccess()">quick acces</button>
+        <button mat-icon-button
+            routerLink="/home">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div> -->
+</div>

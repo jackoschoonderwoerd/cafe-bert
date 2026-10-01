@@ -40,7 +40,7 @@ export class LoginComponent {
                 this.loginForm.value.password!
             );
 
-            await this.router.navigate(['/drinks']);
+            await this.router.navigate(['/home']);
 
         } catch (error) {
             console.error(error);

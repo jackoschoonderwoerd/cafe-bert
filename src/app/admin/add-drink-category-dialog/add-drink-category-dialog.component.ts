@@ -6,9 +6,10 @@ import { MatInput } from '@angular/material/input';
 import { DrinkCategory } from '../../models/drink-category.model';
 import { AppStore } from '../../app-store/app.store';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { DrinkCategoryStore } from '../../features/drinks/drink-category/drink-category-store/drink-category-store';
+
 import { FirebaseError } from '@angular/fire/app';
 import { SnackbarService } from '../../services/snackbar.service';
+import { DrinksStore } from '../../features/drinks/drinks-store/drinks-store';
 
 interface FormValue {
     orderOfAppearance: number;
@@ -20,7 +21,13 @@ interface FormValue {
 
 @Component({
     selector: 'app-add-drink-category-dialog',
-    imports: [ReactiveFormsModule, MatFormFieldModule, MatButtonModule, MatInput, MatDialogModule],
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInput,
+        MatDialogModule
+    ],
     templateUrl: './add-drink-category-dialog.component.html',
     styleUrl: './add-drink-category-dialog.component.scss'
 })
@@ -30,7 +37,7 @@ export class AddDrinkCategoryDialogComponent implements OnInit {
     // dialogRef = inject<AddDrinkCategoryDialogComponent>;
     appStore = inject(AppStore)
     data = inject(MAT_DIALOG_DATA);
-    drinkCategoryStore = inject(DrinkCategoryStore)
+    drinksStore = inject(DrinksStore)
     editmode: boolean = false;
     drinkCategoryId!: string;
     sb = inject(SnackbarService)
@@ -69,7 +76,7 @@ export class AddDrinkCategoryDialogComponent implements OnInit {
                 orderOfAppearance: formValue.orderOfAppearance,
                 consumptions: [],
             }
-            this.drinkCategoryStore.addDrinkCategory(drinkCategory)
+            this.drinksStore.addDrinkCategory(drinkCategory)
                 .then((res: any) => {
                     this.dialogRef.close()
                 })
@@ -77,7 +84,7 @@ export class AddDrinkCategoryDialogComponent implements OnInit {
                     this.sb.openSnackbar(`operation failed due to: ${err.message}`)
                 })
         } else {
-            this.drinkCategoryStore.updateDrinkCategoryProperties(
+            this.drinksStore.updateDrinkCategoryProperties(
                 this.drinkCategoryId,
                 formValue.orderOfAppearance,
                 formValue.nameNl,

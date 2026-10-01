@@ -1,15 +1,50 @@
 <div class="wrapper">
+    <div class="auth">
+        @if(!authStore.isLoggedIn()){
+        <button mat-icon-button
+            class="login"
+            routerLink="/login">
+            <mat-icon>login</mat-icon>
+        </button>
+        } @else {
+
+        <button mat-icon-button
+            class="logout"
+            (click)="authStore.logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+        }
+
+
+    </div>
     <div class="content">
         <div class="cafe">Café</div>
         <div class="parisius">Parisius</div>
     </div>
-    <div class="auth">
-        @if(!authStore.isLoggedIn()){
-        <button class="login"
-            routerLink="/login">log in</button>
-        }@else {
-        <button class="logout"
-            (click)="authStore.logout()">log out</button>
-        }
+
+    <div class="quick-access-buttons">
+
+        <button mat-icon-button
+            class="fork">
+            <img src="/icons/fork-64.png"
+                alt="">
+            <!-- <mat-icon>fast_forward</mat-icon> -->
+        </button>
+
+        <button mat-icon-button
+            class="fork"
+            (click)="fireQuickAccessDrinks()">
+            <img src="/icons/glass.png"
+                alt="">
+            <!-- <mat-icon>fast_forward</mat-icon> -->
+        </button>
     </div>
+
+
+    <!-- <button mat-icon-button
+        (click)="fireQuickAccessDrinks()"
+        class="shortcut-button">
+        <mat-icon>fast_forward</mat-icon>
+    </button> -->
+
 </div>

@@ -61,4 +61,42 @@
     </p>
     }
 
+    <div class="consumptions-list">
+
+        @if (drinksStore.vanWees(); as vanWees) {
+
+        @for (consumption of vanWees.consumptions; track $index) {
+        <div class="consumption">
+
+            @if (appStore.activeLanguage() === 'en') {
+            <div class="name">{{ consumption.nameEn }}</div>
+            } @else {
+            <div class="name">{{ consumption.nameNl }}</div>
+            }
+
+            <div class="price">
+                {{ consumption.price | currency:'EUR' }}
+            </div>
+
+        </div>
+        }
+
+        }
+
+    </div>
+
+    <!-- <div class="consumptions-list">
+
+        @for(consumption of drinksStore.getVanWees().consumptions; track $index) {
+        <div class="consumption">
+            @if(appStore.activeLanguage() === 'en') {
+            <div class="name">{{consumption.nameEn}}</div>
+            } @else {
+            <div class="name">{{consumption.nameNl}}</div>
+            }
+            <div class="price">{{consumption.price|currency:'EUR'}}</div>
+        </div>
+        }
+    </div> -->
+
 </div>

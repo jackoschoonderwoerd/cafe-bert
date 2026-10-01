@@ -1,0 +1,63 @@
+<div class="name_price_buttons">
+    <div class="name_price">
+        <div class="left">
+            <div class="name">
+                {{appStore.activeLanguage() === 'nl'? foodItem()?.nameNl: foodItem()?.nameEn}}
+            </div>
+            <div class="description">{{appStore.activeLanguage() === 'nl'? foodItem()?.descriptionNl: foodItem()?.descriptionEn}}</div>
+
+        </div>
+        <div class="price">
+            {{ foodItem()?.price | currency:'EUR' }}
+        </div>
+
+
+    </div>
+    @if(authStore.isLoggedIn()){
+    <div class="icon-buttons">
+
+        @if(!first()){
+
+        <button mat-icon-button
+            class="small-icon-button"
+            (click)="onMoveUp()">
+            <mat-icon>arrow_drop_up</mat-icon>
+        </button>
+        }
+        @if(!last()) {
+
+        <button mat-icon-button
+            class="small-icon-button"
+            (click)="onMoveDown()">
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        }
+        @if(!foodItem().hidden){
+
+        <button (click)="onHide(true)"
+            mat-icon-button
+            class="small-icon-button">
+
+            <mat-icon>visibility</mat-icon>
+        </button>
+        } @else {
+        <button mat-icon-button
+            class="small-icon-button"
+            (click)="onHide(false)">
+
+            <mat-icon>visibility_off</mat-icon>
+        </button>
+        }
+        <button mat-icon-button
+            class="small-icon-button"
+            (click)="onDelete()">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button
+            class="small-icon-button"
+            (click)="onEdit()">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+    }
+</div>

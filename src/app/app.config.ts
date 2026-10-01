@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode, LOCALE_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -12,6 +12,7 @@ import {
 import { getApp } from '@angular/fire/app';
 import { environment } from '../environments/environment.prod';
 import { provideServiceWorker } from '@angular/service-worker';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
     // providers: [
@@ -38,10 +39,14 @@ export const appConfig: ApplicationConfig = {
                 experimentalForceLongPolling: true
             })
         ),
-
+        provideHttpClient(),
         provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
             registrationStrategy: 'registerImmediately'
-        })
+        }),
+        // {
+        //     provide: LOCALE_ID,
+        //     useValue: 'nl-NL'
+        // },
     ]
 };

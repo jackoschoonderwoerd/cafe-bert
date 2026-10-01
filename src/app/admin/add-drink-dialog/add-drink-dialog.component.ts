@@ -5,10 +5,11 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { Consumption } from '../../models/consumption.model';
-import { DrinkCategoryStore } from '../../features/drinks/drink-category/drink-category-store/drink-category-store';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs'
 import { JsonPipe } from '@angular/common';
+import { DrinksStore } from '../../features/drinks/drinks-store/drinks-store';
 
 interface FormValue {
     nameNl: string;
@@ -35,7 +36,7 @@ export class AddDrinkDialogComponent implements OnInit {
     form: FormGroup;
     fb = inject(FormBuilder)
     editmode: boolean = false;
-    drinkCategoryStore = inject(DrinkCategoryStore)
+    drinksStore = inject(DrinksStore)
     categoryId!: string;
     drinkIndex!: number;
     breakpoints = inject(BreakpointObserver);
@@ -93,7 +94,7 @@ export class AddDrinkDialogComponent implements OnInit {
         const formValue: FormValue = this.form.value;
         const drink: Consumption = { ...formValue }
         if (!this.editmode) {
-            this.drinkCategoryStore.addDrinkToCategory(this.categoryId, drink)
+            this.drinksStore.addDrinkToCategory(this.categoryId, drink)
                 ?.then((res: any) => {
                     this.dialogRef.close()
                 })
@@ -103,7 +104,7 @@ export class AddDrinkDialogComponent implements OnInit {
 
 
         } else {
-            this.drinkCategoryStore.updateDrink(this.categoryId, this.drinkIndex, drink)
+            this.drinksStore.updateDrink(this.categoryId, this.drinkIndex, drink)
                 ?.then((res: any) => {
                     this.dialogRef.close()
                 })

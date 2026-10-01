@@ -1,0 +1,20 @@
+<ul class="events">
+
+    @for (event of schedule()?.events; track event.id) {
+    <li class="event">
+        @if(appStore.activeLanguage() === 'en'){
+
+        {{ event.date | date:'EEEE d MMMM':'' }}
+
+        <strong>{{ event.date | date:'HH:mm':'' }}</strong>
+
+        } @else {
+        {{ event.date | date:'EEEE d MMMM':'':'nl' }}
+        <strong>{{ event.date | date:'HH:mm':'':'nl' }}</strong>
+        }
+        <div class="name">
+            {{ event.name }}
+        </div>
+    </li>
+    }
+</ul>

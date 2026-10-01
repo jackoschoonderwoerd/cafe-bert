@@ -1,0 +1,30 @@
+<!-- <div class="title"
+    mat-dialog-title>
+
+</div> -->
+<!-- <mat-dialog-content> -->
+<div class="wrapper">
+    <div class="language-selector-container">
+        <app-language-selector></app-language-selector>
+    </div>
+    <div class="category-names-list">
+        @for(category of drinksStore.sortedDrinkCategories(); track $index) {
+        <button mat-raised-button
+            class="name"
+            (click)="onSelectCategory(category.id)">
+            @if(appStore.activeLanguage() === 'en'){
+
+            {{category.nameEn}}
+            } @else {{{category.nameNl}}}
+        </button>
+        }
+    </div>
+    <div class="close-container">
+        <button class="close"
+            mat-icon-button
+            mat-dialog-close="">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+<!-- </mat-dialog-content> -->

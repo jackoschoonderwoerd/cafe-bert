@@ -6,11 +6,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MenuFormComponent } from '../../../../admin/shared/menu-form/menu-form.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { DrinkCategoryStore } from '../drink-category-store/drink-category-store';
+
 import { ConfirmService } from '../../../../services/confirm.service';
 import { SnackbarService } from '../../../../services/snackbar.service';
 import { AddDrinkDialogComponent } from '../../../../admin/add-drink-dialog/add-drink-dialog.component';
 import { AuthStore } from '../../../../auth/auth.store';
+import { DrinksStore } from '../../drinks-store/drinks-store';
 
 @Component({
     selector: 'app-drink',
@@ -19,7 +20,6 @@ import { AuthStore } from '../../../../auth/auth.store';
         CurrencyPipe,
         MatIconModule,
         MatButtonModule,
-        JsonPipe
     ],
     templateUrl: './drink.component.html',
     styleUrl: './drink.component.scss'
@@ -36,7 +36,7 @@ export class DrinkComponent {
 
     appStore = inject(AppStore);
     authStore = inject(AuthStore)
-    drinkCategoryStore = inject(DrinkCategoryStore)
+    drinksStore = inject(DrinksStore)
     matDialog = inject(MatDialog)
 
     onEdit() {
@@ -53,7 +53,7 @@ export class DrinkComponent {
     onDelete() {
         this.cf.getConfirmation().subscribe((status: boolean) => {
             if (status) {
-                this.drinkCategoryStore.removeDrinkFromCategory(
+                this.drinksStore.removeDrinkFromCategory(
                     this.categoryId(), this.index()
                 )
             } else {
@@ -62,13 +62,13 @@ export class DrinkComponent {
         })
     }
     onHide(hide: boolean) {
-        this.drinkCategoryStore.hideDrink(this.categoryId(), this.index(), hide)
+        this.drinksStore.hideDrink(this.categoryId(), this.index(), hide)
 
     }
     onMoveUp() {
-        this.drinkCategoryStore.moveUp(this.categoryId(), this.drink())
+        this.drinksStore.moveUp(this.categoryId(), this.drink())
     }
     onMoveDown() {
-        this.drinkCategoryStore.moveDown(this.categoryId(), this.drink())
+        this.drinksStore.moveDown(this.categoryId(), this.drink())
     }
 }

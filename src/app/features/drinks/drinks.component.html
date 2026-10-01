@@ -4,7 +4,7 @@
         (click)="onAddDrinkCategory()">add drink category</button>
     }
     <div class="drink-categories">
-        @for(category of drinkCategoryStore.drinkCategories();track $index) {
+        @for(category of drinkCategoryStore.sortedDrinkCategories();track $index) {
         <app-drink-category [category]="category"></app-drink-category>
         }
 

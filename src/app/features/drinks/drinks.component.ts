@@ -6,8 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { DrinkCategoryComponent } from './drink-category/drink-category.component';
 import { AddDrinkCategoryDialogComponent } from '../../admin/add-drink-category-dialog/add-drink-category-dialog.component';
 import { AppStore } from '../../app-store/app.store';
-import { DrinkCategoryStore } from './drink-category/drink-category-store/drink-category-store';
+
 import { AuthStore } from '../../auth/auth.store';
+import { DrinksStore } from './drinks-store/drinks-store';
 
 @Component({
     selector: 'app-drinks',
@@ -24,7 +25,7 @@ export class DrinksComponent {
 
     matDialog = inject(MatDialog);
     appStore = inject(AppStore)
-    drinkCategoryStore = inject(DrinkCategoryStore);
+    drinkCategoryStore = inject(DrinksStore);
     authStore = inject(AuthStore)
 
 
