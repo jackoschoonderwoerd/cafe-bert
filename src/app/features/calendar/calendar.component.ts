@@ -13,6 +13,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 import { FirebaseError } from '@angular/fire/app';
 import { ConfirmService } from '../../services/confirm.service';
 import { JazzfryCalendarComponent } from './jazzfry-calendar/jazzfry-calendar.component';
+import { ExternalConcert } from '../../models/external-concert.model';
 
 
 @Component({
@@ -89,4 +90,5 @@ export class CalendarComponent {
             return 'color: white; background-color: var(--yellow-extra-dark); padding-left:.5rem; border:1px solid white'
         }
     }
+
 }
