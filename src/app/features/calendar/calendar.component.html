@@ -30,11 +30,16 @@
                     </div>
                 </mat-panel-title>
 
-                <mat-panel-description [style]='getStyleBySubject(item.subjectNl)'> {{item.subjectNl}}
+                <mat-panel-description [style]='getStyleBySubject(item.subjectNl)'>
+                    @if(appStore.activeLanguage()==='en' && item.subjectEn) {
+                    {{item.subjectEn}}
+                    } @else {
+                    {{item.subjectNl}}
+                    }
+
+
                     @if(authStore.isLoggedIn()){
-
                     @if(item.visible){
-
                     <mat-icon>visibility</mat-icon>
                     } @else {
 
@@ -44,26 +49,19 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
 
+            @if(appStore.activeLanguage() === 'en'){
+            <div class="quill-content"
+                [innerHTML]="item.descriptionEn">
+            </div>
+            } @else {
             <div class="quill-content"
                 [innerHTML]="item.descriptionNl">
             </div>
+            }
             @if(subjectContainsJazzfry(item.subjectNl)){
             <app-jazzfry-calendar [artistEntries]="item.artistEntries"></app-jazzfry-calendar>
             }
-            <!-- @if(item.artistEntries){
-            <div class="artists">
-                @for(artist of item.artistEntries;track $index) {
-                <div class="artist">
-                    <div class="name">{{artist.name}}</div>
-                    <div class="instruments">
-                        @for(instrument of artist.instruments; track $index) {
-                        {{instrument}}
-                        }
-                    </div>
-                </div>
-                }
-            </div>
-            } -->
+
             @if(authStore.isLoggedIn()){
             <div class="admin">
                 <div class="admin-only">admin only</div>

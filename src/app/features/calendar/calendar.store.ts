@@ -104,7 +104,9 @@ export class CalendarStore {
                         return {
                             id: document.id,
                             subjectNl: data['subjectNl'],
+                            subjectEn: data['subjectEn'] ?? '',
                             descriptionNl: data['descriptionNl'] ?? '',
+                            descriptionEn: data['descriptionEn'] ?? '',
                             visible: data['visible'] ?? true,
                             mutable: data['mutable'] ?? true,
                             startsAt:
@@ -185,7 +187,7 @@ export class CalendarStore {
                     subjectNl: eventName,
                     startsAt,
                     endsAt,
-                    description: '',
+                    descriptionNl: '',
                     visible: true,
                     mutable: false
                 };
@@ -224,53 +226,6 @@ export class CalendarStore {
 
     }
 
-    // private formatAjaxSubject(name: string): string {
-    //     const teams = name.trim().split(' at ');
-
-    //     if (teams.length !== 2) {
-    //         return name.trim();
-    //     }
-
-    //     const [away, home] = teams;
-
-    //     const shorten = (team: string) => {
-    //         if (team.includes('Ajax')) {
-    //             return 'Ajax';
-    //         }
-
-    //         return team.trim().split(' ')[0];
-    //     };
-
-    //     return `${shorten(home)} - ${shorten(away)}`;
-    // }
-
-    // private loadAjaxSchedule() {
-
-    //     this.ajaxService.getSchedule().subscribe(data => {
-
-    //         const items: CalendarItem[] = data.events.map((event: any) => {
-
-    //             const startsAt = new Date(event.date);
-
-    //             const endsAt = new Date(
-    //                 startsAt.getTime() + 2 * 60 * 60 * 1000
-    //             );
-
-    //             return {
-    //                 id: `ajax-${event.id}`,
-    //                 subject: this.formatAjaxSubject(event.name),
-    //                 startsAt,
-    //                 endsAt,
-    //                 description: '',
-    //                 visible: true,
-    //                 mutable: false
-    //             };
-    //         });
-
-    //         this._ajaxCalendarItems.set(items);
-    //     });
-    // }
-
 
     async addCalendarItem(
         item: Omit<CalendarItem, 'id'>
@@ -307,8 +262,10 @@ export class CalendarStore {
         );
 
         await updateDoc(itemRef, {
-            subject: item.subjectNl,
-            description: item.descriptionNl ?? '',
+            subjectNl: item.subjectNl,
+            subjectEn: item.subjectEn ?? '',
+            descriptionNl: item.descriptionNl ?? '',
+            descriptionEn: item.descriptionEn ?? '',
             visible: item.visible,
             mutable: item.mutable,
             startsAt: Timestamp.fromDate(item.startsAt),

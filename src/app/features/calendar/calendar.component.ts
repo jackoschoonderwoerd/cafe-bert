@@ -23,7 +23,8 @@ import { JazzfryCalendarComponent } from './jazzfry-calendar/jazzfry-calendar.co
         MatExpansionModule,
         MatIconModule,
         MatButtonModule,
-        JazzfryCalendarComponent
+        JazzfryCalendarComponent,
+        JsonPipe
     ],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.scss'
