@@ -19,7 +19,8 @@ import { map } from 'rxjs';
         MatButtonModule,
         MatIconModule,
         RouterModule,
-        DrinkCategoryComponent
+        DrinkCategoryComponent,
+        RouterModule
     ],
     templateUrl: './quick-access-category.component.html',
     styleUrl: './quick-access-category.component.scss'

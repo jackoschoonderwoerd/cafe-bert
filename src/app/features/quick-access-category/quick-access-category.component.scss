@@ -8,19 +8,23 @@
     max-width: 30rem;
     margin: auto;
     min-height: 100dvh;
-    .consumptions {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        .consumption {
-            display: flex;
-            justify-content: space-between;
-        }
-    }
-    .buttons {
-        display: flex;
+    // .consumptions {
+    //     display: flex;
+    //     flex-direction: column;
+    //     gap: 0.5rem;
+    //     .consumption {
+    //         display: flex;
+    //         justify-content: space-between;
+    //     }
+    // }
+    // .buttons {
+    //     display: flex;
 
-        justify-content: space-between;
-        align-items: center;
+    //     justify-content: space-between;
+    //     align-items: center;
+    // }
+    .about-van-wees-button {
+        background-color: var(--p-purple-dark);
+        color: var(--p-yellow-light);
     }
 }

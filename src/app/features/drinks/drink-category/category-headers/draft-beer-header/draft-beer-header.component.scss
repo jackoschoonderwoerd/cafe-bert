@@ -7,9 +7,14 @@
     }
     .draft-beer-sizes {
         // outline: 3px solid red;
+        //
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        min-width: 180px;
+        grid-template-columns: repeat(2, 1fr);
+        min-width: 8rem;
+        font-weight: bold;
+        color: var(--p-yellow-light);
+        text-transform: capitalize;
+        justify-self: end;
 
         .size {
             // font-weight: bold;

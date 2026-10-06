@@ -73,10 +73,11 @@ export class AddFoodDialogComponent {
                 descriptionEn: food.descriptionEn ? food.descriptionEn : '',
                 price: food.price ? food.price : '',
                 priceBottle: food.priceBottle ? food.priceBottle : '',
-                priceKleintje: food.priceKleintje ? food.priceKleintje : '',
+                // priceKleintje: food.priceKleintje ? food.priceKleintje : '',
                 priceFluitje: food.priceFluitje ? food.priceFluitje : '',
                 priceVaasje: food.priceVaasje ? food.priceVaasje : '',
-                priceCl40: food.priceCl40 ? food.priceCl40 : '',
+                // priceCl40: food.priceCl40 ? food.priceCl40 : '',
+                pricePint: food.pricePint ? food.pricePint : ''
             })
         } else {
             this.categoryId = this.data.categoryId

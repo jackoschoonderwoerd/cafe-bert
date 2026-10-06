@@ -18,6 +18,7 @@
             .name {
                 text-transform: capitalize;
                 font-weight: 600;
+                // border: 1px solid red;
             }
             .description {
                 // font-style: italic;
@@ -28,10 +29,11 @@
         .price {
             // font-weight: bold;
             .draft-beer-prices {
-                min-width: 180px;
+                // border: 1px solid red;
+                min-width: 7.5rem;
                 // outline: 3px solid red;
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
                 .price-draft {
                     // outline: 1px solid black;
                     justify-self: end;
@@ -57,6 +59,7 @@
             width: 32px;
             height: 32px;
             padding: 4px;
+            background-color: black !important;
 
             mat-icon {
                 width: 20px;
@@ -64,6 +67,7 @@
                 font-size: 20px;
                 line-height: 20px;
                 margin-bottom: 3px;
+                color: var(--p-yellow-light);
             }
         }
     }

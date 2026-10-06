@@ -11,6 +11,14 @@
         @if(authStore.isLoggedIn()){
         <mat-icon routerLink="/analytics"> vpn_key</mat-icon>
         }
+        @if(newsStore.visible() || authStore.isLoggedIn()) {
+
+        <button class="news"
+            mat-button
+            routerLinkActive="link-active"
+            routerLink="news">{{appStore.activeLanguage()==='en' ? 'news':'nieuws'}}</button>
+
+        }
 
         @for(menuItem of navigationStore.userMenuItems();track $index) {
         <button class="menu-buttons"
@@ -19,27 +27,9 @@
             mat-button>{{appStore.activeLanguage() === 'nl' ? menuItem.nl : menuItem.en}}</button>
         }
     </div>
-    <!-- <div class="center">
 
-        <div class="cafe">Café</div>
-        <div class="parisius">Parisius</div>
-
-
-    </div> -->
     <div class="right">
         <app-language-selector></app-language-selector>
-        <!-- @if(!authStore.isLoggedIn()) {
-        <button mat-icon-button
-            routerLink="login">
-            <mat-icon>login</mat-icon>
-        </button>
-        }
-        @if(authStore.isLoggedIn()) {
-        <button mat-icon-button
-            type="button"
-            (click)="authStore.logout()">
-            <mat-icon>logout</mat-icon>
-        </button>
-        } -->
+
     </div>
 </mat-toolbar>

@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection, isDevMode, LOCALE_ID } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -18,22 +18,13 @@ import { provideQuillConfig } from 'ngx-quill/config';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 
-export const appConfig: ApplicationConfig = {
-    // providers: [
-    //     provideZoneChangeDetection({ eventCoalescing: true }),
-    //     provideRouter(routes),
-    //     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    //     provideAuth(() => getAuth()),
-    //     provideFirestore(() => getFirestore()),
-    //     provideServiceWorker('ngsw-worker.js', {
-    //         enabled: !isDevMode(),
-    //         registrationStrategy: 'registerImmediately'
 
-    //     })
-    // ]
+export const appConfig: ApplicationConfig = {
+
     providers: [
         provideZoneChangeDetection({ eventCoalescing: true }),
-        provideRouter(routes),
+        provideRouter(routes
+        ),
 
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),

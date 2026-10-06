@@ -1,10 +1,11 @@
 .wrapper {
     display: flex;
     justify-content: center;
-    background-color: var(--p-yellow);
-    border-top: 2px solid var(--p-black);
+    background-color: var(--p-purple-dark);
+    color: white;
+    border-top: 2px solid var(--p-yellow-light);
     position: relative;
-    height: 3rem;
+    height: 3.5rem;
     align-items: center;
     .auth {
         position: absolute;
@@ -12,11 +13,11 @@
         // bottom: 5px;
         button {
             // cursor: pointer;
-            background-color: var(--p-blue-light) !important;
+            background-color: var(--p-yellow-dark) !important;
             // border-radius: 7px;
-            color: var(--p-purple);
             mat-icon {
-                color: var(--p-black);
+                color: var(--p-yellow-light);
+                // color: var(--p-black);
             }
         }
     }
@@ -37,15 +38,16 @@
         }
     }
     .quick-access-buttons {
+        // height: 5rem;
         position: absolute;
         right: 0.5rem;
         display: flex;
         gap: 0.5rem;
         button {
-            background-color: var(--p-blue-light) !important;
+            background-color: var(--p-yellow) !important;
             // border: 1px solid var(--p-black);
             mat-icon {
-                color: var(--p-purple);
+                color: var(--p-purple-dark);
             }
         }
     }

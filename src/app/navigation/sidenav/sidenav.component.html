@@ -1,17 +1,29 @@
-<mat-nav-list>
-    <mat-list-item routerLink="home"
+<div class="mat-nav-list">
+    <button mat-raised-button
+        class="mat-list-item home"
+        routerLink="home"
         (click)="onCloseSidenav()">
         <mat-icon>home</mat-icon>
-    </mat-list-item>
+    </button>
+    @if(newsStore.visible() || authStore.isLoggedIn()) {
+    <button mat-raised-button
+        class="mat-list-item"
+        (click)="onCloseSidenav()"
+        routerLink="news">
+        {{appStore.activeLanguage() === 'en' ? 'news': 'nieuws'}}
+    </button>
+    }
     @for(menuItem of navigationStore.userMenuItems(); track menuItem.link) {
-    <mat-list-item (click)="onCloseSidenav()"
+    <button mat-raised-button
+        class="mat-list-item"
+        (click)="onCloseSidenav()"
         [routerLink]="menuItem.link">
 
         {{appStore.activeLanguage() === 'nl' ? menuItem.nl : menuItem.en}}
 
-    </mat-list-item>
+    </button>
     }
-</mat-nav-list>
+</div>
 <div class="button-container">
 
     <button mat-icon-button

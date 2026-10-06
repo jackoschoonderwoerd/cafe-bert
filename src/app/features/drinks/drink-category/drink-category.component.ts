@@ -26,13 +26,12 @@ import { DrinksStore } from '../drinks-store/drinks-store';
     templateUrl: './drink-category.component.html',
     styleUrl: './drink-category.component.scss'
 })
-export class DrinkCategoryComponent implements OnInit {
+export class DrinkCategoryComponent {
     category = input.required<DrinkCategory>()
     appStore = inject(AppStore);
     authStore = inject(AuthStore)
     drinkCateegoryStore = inject(DrinksStore)
     matDialog = inject(MatDialog)
-    // data = inject(MAT_DIALOG_DATA, { optional: true });
     editmode: boolean = false;
     id!: string;
     style: Object;
@@ -44,39 +43,7 @@ export class DrinkCategoryComponent implements OnInit {
         }
     }
 
-    ngOnInit(): void {
-        // console.log(this.category())
-    }
 
-    // getStyle(categoryNameEn: string) {
-    //     // console.log(categoryNameEn)
-    //     switch (categoryNameEn) {
-    //         case 'draft beers':
-    //         case 'bottled':
-    //         case 'draft beers 40cl':
-    //         case '0.0%':
-    //             return {
-    //                 'backgroundColor': 'var(--p-purple-slightly-lighter)',
-    //                 'color': 'var(--p-black)',
-    //                 'font-weight': 'bold'
-    //             }
-    //         case 'white wine':
-    //         case 'red wine':
-    //         case 'sparkling':
-    //         case 'arend jan de wijnman':
-    //             return {
-    //                 'backgroundColor': 'var(--p-blue-slightly-lighter)',
-    //                 'color': 'var(--p-black)',
-    //                 'font-weight': 'bold'
-    //             }
-    //         default:
-    //             return {
-    //                 'backgroundColor': 'var(--p-brown)',
-    //                 'color': 'var(--p-yellow)',
-    //                 'font-weight': 'bold'
-    //             }
-    //     }
-    // }
 
     getStyle(orderOfAppearance: number) {
         // console.log('orderOfAppearance: ', orderOfAppearance)
@@ -84,13 +51,13 @@ export class DrinkCategoryComponent implements OnInit {
         // console.log('isEven: ', isEven)
         if (isEven) {
             return {
-                'backgroundColor': 'var(--p-purple)',
+                'backgroundColor': 'var(--p-purple-dark)',
                 'color': 'var(--p-black)',
             }
         } else {
 
             return {
-                'backgroundColor': 'var(--p-blue)',
+                'backgroundColor': 'var(--p-blue-dark)',
                 'color': 'var(--p-black)',
             }
         }
@@ -98,11 +65,15 @@ export class DrinkCategoryComponent implements OnInit {
 
     onAddDrink() {
         this.matDialog.open(AddDrinkDialogComponent, {
+            width: '100%',
+            maxWidth: '95dvw',
             data: { categoryId: this.category().id }
         })
     }
     editDrinkCategory() {
         this.matDialog.open(AddDrinkCategoryDialogComponent, {
+            width: '100%',
+            maxWidth: '95dvw',
             data: {
                 category: this.category()
             }

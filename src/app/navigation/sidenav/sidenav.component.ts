@@ -8,6 +8,8 @@ import { AppStore } from '../../app-store/app.store';
 import { MatButtonModule } from '@angular/material/button';
 import { NavigationStore } from '../navigation-store/navigation.store';
 import { JsonPipe } from '@angular/common';
+import { NewsStore } from '../../shared/news/news.store';
+import { AuthStore } from '../../auth/auth.store';
 
 @Component({
     selector: 'app-sidenav',
@@ -19,7 +21,9 @@ export class SidenavComponent {
     @Output() closeSidenav = new EventEmitter<void>
 
     appStore = inject(AppStore)
-    navigationStore = inject(NavigationStore)
+    navigationStore = inject(NavigationStore);
+    newsStore = inject(NewsStore)
+    authStore = inject(AuthStore)
 
 
 

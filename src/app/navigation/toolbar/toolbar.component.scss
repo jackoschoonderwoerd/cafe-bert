@@ -20,6 +20,11 @@ mat-toolbar {
                 display: none;
             }
         }
+        .news {
+            @media (900px > width) {
+                display: none;
+            }
+        }
         .menu-buttons {
             background-color: var(--p-yellow) !important;
             @media (900px > width) {
@@ -28,38 +33,38 @@ mat-toolbar {
         }
         .link-active {
             // border: 3px var(--p-black);
-            background-color: var(--p-blue) !important;
-            color: white !important;
+            background-color: var(--p-purple-dark) !important;
+            color: var(--p-yellow-light) !important;
             // border: 3px solid var(--p-black);
         }
     }
-    .center {
-        padding: 0.3rem;
-        display: flex;
-        gap: 0.5rem;
-        @media (650px > width) {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        // margin: 50%;
-        .cafe {
-            font-family: "Cormorant Garamond", serif;
-            font-style: italic;
-            // font-weight: 400;
-            font-size: 1.5rem;
-            // font-weight: 600;
-        }
-        .parisius {
-            font-family: "Alegreya", serif;
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-        // @media (650px > width) {
-        //     display: none;
-        // }
-    }
+    // .center {
+    //     padding: 0.3rem;
+    //     display: flex;
+    //     gap: 0.5rem;
+    //     @media (650px > width) {
+    //         position: absolute;
+    //         top: 50%;
+    //         left: 50%;
+    //         transform: translate(-50%, -50%);
+    //     }
+    //     // margin: 50%;
+    //     .cafe {
+    //         font-family: "Cormorant Garamond", serif;
+    //         font-style: italic;
+    //         // font-weight: 400;
+    //         font-size: 1.5rem;
+    //         // font-weight: 600;
+    //     }
+    //     .parisius {
+    //         font-family: "Alegreya", serif;
+    //         font-weight: 600;
+    //         font-size: 1.5rem;
+    //     }
+    //     // @media (650px > width) {
+    //     //     display: none;
+    //     // }
+    // }
     .right {
         align-items: center;
         display: flex;

@@ -49,15 +49,16 @@ export class AddDrinkDialogComponent implements OnInit {
     ) {
         this.form = this.fb.group({
             nameNl: new FormControl(null, [Validators.required]),
-            nameEn: new FormControl(null, [Validators.required]),
+            nameEn: new FormControl(null),
             descriptionNl: new FormControl(null),
             descriptionEn: new FormControl(null),
             price: new FormControl(null),
             priceBottle: new FormControl(null),
-            priceKleintje: new FormControl(null),
+            // priceKleintje: new FormControl(null),
             priceFluitje: new FormControl(null),
             priceVaasje: new FormControl(null),
-            priceCl40: new FormControl(null)
+            // priceCl40: new FormControl(null),
+            pricePint: new FormControl(null)
         })
         console.log(data)
     }
@@ -80,10 +81,11 @@ export class AddDrinkDialogComponent implements OnInit {
                 descriptionEn: drink.descriptionEn ? drink.descriptionEn : '',
                 price: drink.price ? drink.price : '',
                 priceBottle: drink.priceBottle ? drink.priceBottle : '',
-                priceKleintje: drink.priceKleintje ? drink.priceKleintje : '',
+                // priceKleintje: drink.priceKleintje ? drink.priceKleintje : '',
                 priceFluitje: drink.priceFluitje ? drink.priceFluitje : '',
                 priceVaasje: drink.priceVaasje ? drink.priceVaasje : '',
-                priceCl40: drink.priceCl40 ? drink.priceCl40 : '',
+                pricePint: drink.pricePint ? drink.pricePint : ''
+                // priceCl40: drink.priceCl40 ? drink.priceCl40 : '',
             })
         } else {
             this.categoryId = this.data.categoryId

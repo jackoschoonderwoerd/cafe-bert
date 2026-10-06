@@ -4,13 +4,10 @@
     <app-drink-category [category]="category"></app-drink-category>
     }
 
-    <!-- <div class="buttons">
 
-        <button mat-raised-button
-            (click)="onQuickAccess()">quick acces</button>
-        <button mat-icon-button
-            routerLink="/home">
-            <mat-icon>home</mat-icon>
-        </button>
-    </div> -->
+    @if(categoryId() === 'n8gyvb2Ud0GVZcyjyFPI') {
+    <button class="about-van-wees-button"
+        mat-raised-button
+        routerLink="/dutch-gin">{{appStore.activeLanguage() === 'en'? 'about van wees': 'over van wees'}}</button>
+    }
 </div>

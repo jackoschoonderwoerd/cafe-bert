@@ -18,6 +18,10 @@
         flex-direction: column;
         gap: 0.3rem;
         overflow-y: auto;
+        .category-name {
+            background-color: var(--p-purple-dark);
+            color: var(--p-yellow-light);
+        }
         // .name.mat-mdc-raised-button,
         // .name.mat-mdc-raised-button:hover,
         // .name.mat-mdc-raised-button:focus,

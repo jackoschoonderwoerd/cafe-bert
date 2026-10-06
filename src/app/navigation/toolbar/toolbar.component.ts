@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { MenuItem } from '../../models/menu-item.model';
 import { AuthStore } from '../../auth/auth.store';
+import { NewsStore } from '../../shared/news/news.store';
 
 @Component({
     selector: 'app-toolbar',
@@ -28,6 +29,7 @@ export class ToolbarComponent {
     appStore = inject(AppStore);
     authStore = inject(AuthStore)
     navigationStore = inject(NavigationStore);
+    newsStore = inject(NewsStore)
 
 
     @Output() sidenavToggle = new EventEmitter<void>

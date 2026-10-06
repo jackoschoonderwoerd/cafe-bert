@@ -1,0 +1,32 @@
+<div class="title"
+    mat-dialog-title>news</div>
+<mat-dialog-content>
+
+
+    <div class="quill-text-editors">
+        <app-quill-text-editor [language]="'dutch'"
+            [content]="contentNl"
+            (contentChange)="contentNl = $event"></app-quill-text-editor>
+
+        <div class="quill-text-editor-container-en">
+            <app-quill-text-editor [language]="'english'"
+                [content]="contentEn"
+                (contentChange)="contentEn = $event"></app-quill-text-editor>
+        </div>
+    </div>
+    <mat-checkbox [(ngModel)]="visible">visible</mat-checkbox>
+
+    <!-- <app-quill-text-editor [language]="'dutch'"
+        (contentChange)="contentNl=$event"></app-quill-text-editor>
+
+
+    <app-quill-text-editor [language]="'english'"
+        (contentChange)="contentEn=$event"></app-quill-text-editor> -->
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button
+        (click)="onCancel()">cancel</button>
+    <button mat-raised-button
+        (click)="onSave()">update news item</button>
+</mat-dialog-actions>

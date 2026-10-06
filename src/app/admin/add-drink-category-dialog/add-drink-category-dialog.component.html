@@ -32,11 +32,11 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <div class="buttons">
-        <button mat-raised-button
-            mat-dialog-close>cancel</button>
-        <button mat-raised-button
-            (click)="onAddDrinkCategory()">{{editmode ? 'update': 'add'}}&nbsp;drink category</button>
-    </div>
+    <!-- <div class="buttons"> -->
+    <button mat-raised-button
+        (click)="onAddDrinkCategory()">{{editmode ? 'update': 'add'}}&nbsp;drink category</button>
+    <button mat-raised-button
+        mat-dialog-close>cancel</button>
+    <!-- </div> -->
 
 </mat-dialog-actions>

@@ -15,9 +15,13 @@
 // }
 .wrapper {
     // padding: 1rem;
+    button {
+        background-color: white;
+        margin-bottom: 0.5rem;
+    }
     .drink-categories {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
         gap: 0.3rem;
 
         // align-items: start;

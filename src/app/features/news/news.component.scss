@@ -1,0 +1,14 @@
+.wrapper {
+    width: 100%;
+    max-width: 30rem;
+    margin: auto;
+    min-height: 100dvh;
+    background-color: var(--p-purple-dark);
+    color: var(--p-yellow-light);
+    border: 3px solid var(--p-yellow-light);
+    // padding: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    .news {
+    }
+}

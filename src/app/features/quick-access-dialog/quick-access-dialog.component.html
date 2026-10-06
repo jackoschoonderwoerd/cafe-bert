@@ -10,7 +10,7 @@
     <div class="category-buttons-list">
         @for(category of drinksStore.sortedDrinkCategories(); track $index) {
         <button mat-raised-button
-            class="name"
+            class="category-name"
             (click)="onSelectCategory(category.id)">
             @if(appStore.activeLanguage() === 'en'){
 

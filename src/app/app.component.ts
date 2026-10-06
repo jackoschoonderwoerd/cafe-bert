@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, viewChild, ElementRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { AppStore } from './app-store/app.store';
@@ -14,6 +14,9 @@ import { FoodCategoryStore } from './features/food/food-store/food-store';
 import { DrinksStore } from './features/drinks/drinks-store/drinks-store';
 import { MatDialog } from '@angular/material/dialog';
 import { QuickAccessDialogComponent } from './features/quick-access-dialog/quick-access-dialog.component';
+import { NewsStore } from './shared/news/news.store';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -31,8 +34,11 @@ export class AppComponent implements OnInit {
     title = 'cafe-bert';
     appStore = inject(AppStore);
     drinksStore = inject(DrinksStore);
+    newsStore = inject(NewsStore)
     foodCategoryStore = inject(FoodCategoryStore);
-    matDialog = inject(MatDialog)
+    matDialog = inject(MatDialog);
+    private router = inject(Router);
+    main = viewChild<ElementRef<HTMLElement>>('main');
 
     // private updateService = inject(UpdateService);
     private analytics = inject(AnalyticsService);
@@ -43,11 +49,17 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.newsStore.loadNews();
         this.appStore.getDrinks();
         this.drinksStore.getDrinkCategories();
         this.foodCategoryStore.getSortedFoodCategories();
-        // this.matDialog.open(QuickAccessDialogComponent);
 
+        this.router.events
+            .pipe(filter(event => event instanceof NavigationEnd))
+            .subscribe(() => {
+                this.main()?.nativeElement.scrollTo({
+                    top: 0
+                });
+            });
     }
 }

@@ -85,18 +85,8 @@
 
     </div>
 
-    <!-- <div class="consumptions-list">
-
-        @for(consumption of drinksStore.getVanWees().consumptions; track $index) {
-        <div class="consumption">
-            @if(appStore.activeLanguage() === 'en') {
-            <div class="name">{{consumption.nameEn}}</div>
-            } @else {
-            <div class="name">{{consumption.nameNl}}</div>
-            }
-            <div class="price">{{consumption.price|currency:'EUR'}}</div>
-        </div>
-        }
-    </div> -->
+    <button class="to-van-wees-button"
+        mat-raised-button
+        (click)="toVanWeesCategory()">{{appStore.activeLanguage()==='en'?'van wees assortment':'van wees collectie'}}</button>
 
 </div>

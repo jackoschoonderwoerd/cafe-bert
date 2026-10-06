@@ -6,6 +6,11 @@ export const routes: Routes = [
         path: '', redirectTo: 'home', pathMatch: 'full'
     },
     {
+        path: 'news',
+        loadComponent: () => import('./features/news/news.component')
+            .then(c => c.NewsComponent)
+    },
+    {
         path: 'quick-access-category/:categoryId',
         loadComponent: () => import('./features/quick-access-category/quick-access-category.component')
             .then(c => c.QuickAccessCategoryComponent)

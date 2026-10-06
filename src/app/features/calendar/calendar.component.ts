@@ -77,17 +77,19 @@ export class CalendarComponent {
     }
     ajaxStyle(subjectNl: string) {
         return subjectNl.toLowerCase().includes('ajax')
-            ? 'color: white; background-color: red; padding:.5rem; border:1px solid white'
+            ? 'color: white; background-color: var(--p-ajax-red); padding:.5rem; border:1px solid white'
             : '';
     }
 
     getStyleBySubject(subjectNl: string) {
+        const subjectLowerCase = subjectNl.toLowerCase()
         if (subjectNl.toLowerCase().includes('ajax')) {
+
             return 'color: white; background-color: red; padding-left:.5rem; border:1px solid white'
         } else if (subjectNl.toLowerCase().includes('jazzfry')) {
-            return 'color: white; background-color: var(--purple-extra-dark); padding-left:.5rem; border:1px solid white'
+            return 'color: white; background-color: var(--p-purple-dark); padding-left:.5rem; border:1px solid white'
         } else {
-            return 'color: white; background-color: var(--yellow-extra-dark); padding-left:.5rem; border:1px solid white'
+            return 'color: white; background-color: var(--p-yellow-dark); padding-left:.5rem; border:1px solid white'
         }
     }
 

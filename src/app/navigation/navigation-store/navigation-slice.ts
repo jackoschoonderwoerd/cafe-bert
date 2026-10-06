@@ -21,6 +21,11 @@ export const initialNavigationSlice: NavigationSlice = {
             en: 'welcome',
             link: 'welcome'
         },
+        // {
+        //     nl: 'nieuws',
+        //     en: 'news',
+        //     link: 'news'
+        // },
         {
             nl: 'eten',
             en: 'food',

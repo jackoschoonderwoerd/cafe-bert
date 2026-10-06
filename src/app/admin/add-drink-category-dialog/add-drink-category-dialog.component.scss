@@ -4,3 +4,11 @@ mat-dialog-content {
         flex-direction: column;
     }
 }
+mat-dialog-actions {
+    display: flex;
+
+    flex-direction: column;
+    gap: 1rem;
+    .buttons {
+    }
+}

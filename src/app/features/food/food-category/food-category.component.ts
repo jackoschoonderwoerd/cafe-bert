@@ -44,13 +44,13 @@ export class FoodCategoryComponent {
         // console.log('isEven: ', isEven)
         if (isEven) {
             return {
-                'backgroundColor': 'var(--p-purple)',
+                'backgroundColor': 'var(--p-purple-dark)',
                 'color': 'var(--p-black)',
             }
         } else {
 
             return {
-                'backgroundColor': 'var(--p-blue)',
+                'backgroundColor': 'var(--p-blue-dark)',
                 'color': 'var(--p-black)',
             }
         }

@@ -23,6 +23,7 @@ mat-sidenav-container {
         main {
             grid-area: main;
             overflow: auto;
+            height: 100%;
             padding: 0.3rem;
             background-color: var(--p-black);
 

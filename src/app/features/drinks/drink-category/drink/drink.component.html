@@ -1,9 +1,14 @@
 <div class="name_price_buttons">
     <div class="name_price">
         <div class="left">
-            <div class="name">
+            @if(appStore.activeLanguage() === 'en' && drink().nameEn) {
+            <div class="name">{{drink().nameEn}}</div>
+            } @else {
+            <div class="name">{{drink().nameNl}}</div>
+            }
+            <!-- <div class="name">
                 {{appStore.activeLanguage() === 'nl'? drink()?.nameNl: drink()?.nameEn}}
-            </div>
+            </div> -->
             <div class="description">{{appStore.activeLanguage() === 'nl'? drink()?.descriptionNl: drink()?.descriptionEn}}</div>
 
         </div>
@@ -45,29 +50,21 @@
 
             @case ('draft beers') {
             <div class="draft-beer-prices">
-                <div class="price-draft">
-                    {{ drink()?.priceKleintje | currency:'EUR' }}
-                </div>
-                <div class="price-draft">
+                <!-- <div class="price-draft">
                     {{ drink()?.priceFluitje | currency:'EUR' }}
-                </div>
+                </div> -->
                 <div class="price-draft">
                     {{ drink()?.priceVaasje | currency:'EUR' }}
                 </div>
+                <div class="price-draft">
+                    {{ drink()?.pricePint | currency:'EUR' }}
+                </div>
             </div>
             }
 
-            @case ('arend jan de wijnman') {
-            <div class="price-bottle">
-                {{ drink()?.priceBottle | currency:'EUR' }}
-            </div>
-            }
 
-            @case ('arend jan de wijnman') {
-            <div class="price-bottle">
-                {{ drink()?.priceBottle | currency:'EUR' }}
-            </div>
-            }
+
+
 
             @case ('sparkling') {
             <div class="price-bottle">
@@ -91,6 +88,7 @@
         @if(!first()){
 
         <button mat-icon-button
+            style="background-color: black !important;"
             class="small-icon-button"
             (click)="onMoveUp()">
             <mat-icon>arrow_drop_up</mat-icon>

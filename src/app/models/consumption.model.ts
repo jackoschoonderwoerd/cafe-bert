@@ -6,10 +6,11 @@ export interface Consumption {
     price?: number;
     id?: string;
     priceBottle?: number;
-    priceKleintje?: number;
+    // priceKleintje?: number;
     priceFluitje?: number;
     priceVaasje?: number;
-    priceCl40?: number;
+    pricePint?: number;
+    // priceCl40?: number;
     hidden?: boolean;
 
 }
