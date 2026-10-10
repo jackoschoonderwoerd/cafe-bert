@@ -21,7 +21,6 @@ import { ConfirmService } from '../../services/confirm.service';
         QuillTextEditorComponent,
         MatDialogModule,
         MatFormFieldModule,
-        MatInput,
         MatButtonModule,
         MatCheckboxModule
     ],

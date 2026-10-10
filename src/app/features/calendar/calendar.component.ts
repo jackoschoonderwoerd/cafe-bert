@@ -25,7 +25,6 @@ import { ExternalConcert } from '../../models/external-concert.model';
         MatIconModule,
         MatButtonModule,
         JazzfryCalendarComponent,
-        JsonPipe
     ],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.scss'

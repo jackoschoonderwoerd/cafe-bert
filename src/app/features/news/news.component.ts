@@ -10,7 +10,7 @@ import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'app-news',
-    imports: [MatButtonModule, JsonPipe],
+    imports: [MatButtonModule],
     templateUrl: './news.component.html',
     styleUrl: './news.component.scss'
 })
