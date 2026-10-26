@@ -11,7 +11,8 @@ import {
     orderBy,
     query,
     getDoc,
-    doc
+    doc,
+    where
 } from 'firebase/firestore';
 
 import { environment } from '../../environments/environment';
@@ -56,6 +57,7 @@ export class ExternalConcertService {
 
         const concertsQuery = query(
             concertsRef,
+            where('status', '==', 'published'),
             orderBy('startAt', 'asc')
         );
 
@@ -87,34 +89,7 @@ export class ExternalConcertService {
                     })
                 );
 
-                this._calendarItems.set(items);
-
-                // const items: CalendarItem[] =
-                //     snapshot.docs.map(document => {
-                //         const concert = {
-                //             id: document.id,
-                //             ...document.data()
-                //         } as ExternalConcert;
-                //         return {
-                //             id: `concert-${concert.id}`,
-
-                //             subject: 'Jazzfry',
-
-                //             startsAt:
-                //                 concert.startAt.toDate(),
-
-                //             endsAt:
-                //                 concert.endAt.toDate(),
-
-                //             artistEntries: this.loadArtists(concert.artistEntries),
-
-                //             visible: true,
-
-                //             mutable: false
-                //         };
-                //     });
-
-                // this._calendarItems.set(items);
+                this._calendarItems.set(items)
             }
         );
     }
@@ -138,30 +113,6 @@ export class ExternalConcertService {
             }
         }
         return artists
-
-        // artistEntries.forEach((entry:ConcertArtistEntry) => {
-        //     const artistRef = doc(
-        //         this.firestore,
-        //         `jazzbert-artists/${entry.artistId}`
-        //     )
-        //     const artistSnap = await getDoc(artistRef);
-
-        //     if (artistSnap.exists()) {
-        //         console.log(artistSnap.data());
-        //     }
-        // })
-
-        // console.log(artistEntries)
-
-        // const concertsRef = collection(
-        //     this.firestore,
-        //     'jazzbert-artists'
-        // );
-
-        // const concertsQuery = query(
-        //     concertsRef,
-        //     orderBy('startAt', 'asc')
-        // );
 
     }
 }

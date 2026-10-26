@@ -31,7 +31,7 @@ import { filter } from 'rxjs';
     styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-    title = 'cafe-bert';
+    title = 'cafe-parisius';
     appStore = inject(AppStore);
     drinksStore = inject(DrinksStore);
     newsStore = inject(NewsStore)
